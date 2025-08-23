@@ -1,6 +1,7 @@
 import { SanityImage } from "@/components/shared/SanityImage";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import { GetPostBySlug } from "@/sanity/queries";
 import { format } from "date-fns";
 import { PortableText, PortableTextReactComponents } from "next-sanity";
 import { SiFacebook, SiLinkedin, SiX } from "react-icons/si";
@@ -10,7 +11,7 @@ import Image from "next/image";
 export const runtime = "edge";
 
 async function getPostFromSanity(slug: string) {
-  const query = `*[_type == "post" && slug.current == $slug]{ _id, title, description, publishedAt, author->{name}, slug, categories[]->{title}, mainImage, body }`;
+  const query = GetPostBySlug;
   return (
     await client.fetch(query, {
       slug: slug,
