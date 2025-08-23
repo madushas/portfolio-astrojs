@@ -8,6 +8,7 @@ import { FramerMotionProvider } from "@/components/shared/FramerMotionProvider";
 import Footer from "@/components/shared/Footer";
 import { cn } from "@/lib/utils";
 import { CSPostHogProvider } from "./providers";
+import ClientErrorBoundary from "@/components/shared/ClientErrorBoundary";
 
 const ibm_plex_sans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -36,7 +37,9 @@ export default function Layout({
         >
           <ThemeProvider attribute="class" defaultTheme="system">
             <FramerMotionProvider>
-              {children}
+              <ClientErrorBoundary>
+                {children}
+              </ClientErrorBoundary>
               <Footer />
             </FramerMotionProvider>
           </ThemeProvider>

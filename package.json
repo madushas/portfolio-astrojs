@@ -20,6 +20,7 @@
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@sanity/image-url": "^1.1.0",
+    "@sentry/nextjs": "^10.5.0",
     "@tailwindcss/typography": "^0.5.16",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -36,6 +37,7 @@
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.62.0",
     "react-icons": "^5.5.0",
+    "require-in-the-middle": "^7.5.2",
     "sanity": "^4.5.0",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.1.0"
@@ -90,6 +92,7 @@
       "workerd"
     ],
     "onlyBuiltDependencies": [
+      "@sentry/cli",
       "@tailwindcss/oxide",
       "core-js",
       "esbuild",
