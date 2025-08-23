@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import { m } from "framer-motion";
+import { usePrefersReducedMotion } from "@/lib/utils";
+import { m, RepeatType, easeInOut } from "framer-motion";
 
 type SpotlightProps = {
   gradientFirst?: string;
@@ -25,30 +26,29 @@ export const Spotlight = ({
   duration = 7,
   xOffset = 100,
 }: SpotlightProps = {}) => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+  // Animation config: disable or simplify if reduced motion is preferred
+  const leftAnimate = prefersReducedMotion ? { x: 0 } : { x: [0, xOffset, 0] };
+  const rightAnimate = prefersReducedMotion ? { x: 0 } : { x: [0, -xOffset, 0] };
+  const leftTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration, repeat: Infinity, repeatType: "reverse" as RepeatType, ease: easeInOut };
+  const rightTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration, repeat: Infinity, repeatType: "reverse" as RepeatType, ease: easeInOut };
   return (
     <m.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      transition={{
-        duration: 1.5,
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5 }}
       className="pointer-events-none absolute inset-0 h-full w-full"
+      style={{ willChange: "opacity" }}
     >
       <m.div
-        animate={{
-          x: [0, xOffset, 0],
-        }}
-        transition={{
-          duration,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-        }}
+        animate={leftAnimate}
+        transition={leftTransition}
         className="absolute top-0 left-0 w-screen h-screen z-40 pointer-events-none"
+        style={{ willChange: "transform" }}
       >
         <div
           style={{
@@ -56,42 +56,36 @@ export const Spotlight = ({
             background: gradientFirst,
             width: `${width}px`,
             height: `${height}px`,
+            willChange: "transform, opacity",
           }}
           className={`absolute top-0 left-0`}
         />
-
         <div
           style={{
             transform: "rotate(-45deg) translate(5%, -50%)",
             background: gradientSecond,
             width: `${smallWidth}px`,
             height: `${height}px`,
+            willChange: "transform, opacity",
           }}
           className={`absolute top-0 left-0 origin-top-left`}
         />
-
         <div
           style={{
             transform: "rotate(-45deg) translate(-180%, -70%)",
             background: gradientThird,
             width: `${smallWidth}px`,
             height: `${height}px`,
+            willChange: "transform, opacity",
           }}
           className={`absolute top-0 left-0 origin-top-left`}
         />
       </m.div>
-
       <m.div
-        animate={{
-          x: [0, -xOffset, 0],
-        }}
-        transition={{
-          duration,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-        }}
+        animate={rightAnimate}
+        transition={rightTransition}
         className="absolute top-0 right-0 w-screen h-screen z-40 pointer-events-none"
+        style={{ willChange: "transform" }}
       >
         <div
           style={{
@@ -99,26 +93,27 @@ export const Spotlight = ({
             background: gradientFirst,
             width: `${width}px`,
             height: `${height}px`,
+            willChange: "transform, opacity",
           }}
           className={`absolute top-0 right-0`}
         />
-
         <div
           style={{
             transform: "rotate(45deg) translate(-5%, -50%)",
             background: gradientSecond,
             width: `${smallWidth}px`,
             height: `${height}px`,
+            willChange: "transform, opacity",
           }}
           className={`absolute top-0 right-0 origin-top-right`}
         />
-
         <div
           style={{
             transform: "rotate(45deg) translate(180%, -70%)",
             background: gradientThird,
             width: `${smallWidth}px`,
             height: `${height}px`,
+            willChange: "transform, opacity",
           }}
           className={`absolute top-0 right-0 origin-top-right`}
         />

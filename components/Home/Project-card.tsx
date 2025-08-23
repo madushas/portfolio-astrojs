@@ -10,7 +10,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function ProjectCard({
   title,
@@ -25,7 +25,7 @@ export default function ProjectCard({
   index,
 }: ProjectType & { index: number }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
@@ -118,6 +118,6 @@ export default function ProjectCard({
           <span />
         )}
       </div>
-    </motion.div>
+    </m.div>
   );
 }

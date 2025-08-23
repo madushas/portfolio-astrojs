@@ -1,7 +1,7 @@
 import React, { HTMLProps, JSX } from "react";
 import { Button, ButtonProps } from "../ui/button";
 import Image from "next/image";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, m } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Download, Mail } from "lucide-react";
 
@@ -49,13 +49,13 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
       className="relative z-10 flex min-h-screen items-center justify-center px-4"
       {...props}
     >
-      <motion.div
+  <m.div
         style={{ y: y1 }}
         className="container mx-auto flex flex-col items-center justify-between gap-12 px-4 md:flex-row md:px-6"
       >
         {/* Content Section */}
         <div className="flex flex-col space-y-8 md:w-1/2">
-          <motion.div
+          <m.div
             style={{ y: y2 }}
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
             className="space-y-4"
           >
             {/* Status Badge */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
@@ -71,7 +71,7 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
             >
               <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
               Available for work
-            </motion.div>
+            </m.div>
 
             {/* Main Heading */}
             <div className="space-y-2">
@@ -85,10 +85,10 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
                 Full-Stack Developer
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Description */}
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -97,10 +97,10 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
             I craft modern, scalable web applications with cutting-edge
             technologies. From concept to deployment, I bring ideas to life with
             clean code and exceptional user experiences.
-          </motion.p>
+          </m.p>
 
           {/* CTA Buttons */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
@@ -124,10 +124,10 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
                 Let&apos;s Talk
               </Link>
             </Button>
-          </motion.div>
+          </m.div>
 
           {/* Social Links */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
@@ -147,11 +147,11 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
                 </Link>
               </Button>
             ))}
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Image Section */}
-        <motion.div
+  <m.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
@@ -177,24 +177,24 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
             </div>
 
             {/* Floating badges */}
-            <motion.div
+            <m.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
               className="bg-background/80 absolute top-8 -right-4 rounded-lg border px-3 py-2 shadow-lg backdrop-blur-sm"
             >
               <div className="text-sm font-semibold">🤖 AI Specialist</div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
               className="bg-background/80 absolute bottom-8 -left-4 rounded-lg border px-3 py-2 shadow-lg backdrop-blur-sm"
             >
               <div className="text-sm font-semibold">⚡ .NET Expert</div>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
-      </motion.div>
+  </m.div>
+  </m.div>
     </section>
   );
 }
