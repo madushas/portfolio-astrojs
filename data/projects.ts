@@ -1,11 +1,11 @@
 import { StaticImageData } from "next/image";
 
-import SummarizerImage from "@/public/images/projects/t5_summarizer.jpg";
-import CognizerImage from "@/public/images/projects/cognizer.jpg";
-import TravelAgencyImage from "@/public/images/projects/travel.jpg";
-import liveLocation from "@/public/images/projects/tracker.jpg";
-import FuzzyYtIcon from "@/public/images/projects/fuzzy-yt.jpg";
-import Portfolio from "@/public/images/projects/portfolio.jpg";
+import SummarizerImage from "@/public/images/projects/t5_summarizer.webp";
+import CognizerImage from "@/public/images/projects/cognizer.webp";
+import TravelAgencyImage from "@/public/images/projects/travel.webp";
+import liveLocation from "@/public/images/projects/tracker.webp";
+import FuzzyYtIcon from "@/public/images/projects/fuzzy-yt.webp";
+import Portfolio from "@/public/images/projects/portfolio.webp";
 
 export type ProjectType = {
   title: string;

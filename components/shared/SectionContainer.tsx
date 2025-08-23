@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 
 interface SectionContainerProps {
@@ -27,7 +27,7 @@ export default function SectionContainer({
       className={cn("py-24 px-4 sm:px-6 lg:px-8", className)}
     >
       <div className="mx-auto max-w-7xl">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
@@ -41,15 +41,15 @@ export default function SectionContainer({
               {subtitle}
             </p>
           )}
-        </motion.div>
+        </m.div>
         
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {children}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

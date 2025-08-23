@@ -3,10 +3,9 @@ import { Button, ButtonProps } from "../ui/button";
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { ArrowRight, Download, Mail } from "lucide-react";
 
-import HeroImage from "@/public/images/profile.jpg";
+import HeroImage from "@/public/images/profile.webp";
 import { SiLinkedin, SiX, SiGithub } from "react-icons/si";
 
 const socialMedia: {
@@ -171,6 +170,9 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
                 alt="Madusha Sandaruwan - Full-Stack Developer"
                 className="aspect-square object-cover transition-transform duration-500 hover:scale-105"
                 priority
+                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 500px"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
 

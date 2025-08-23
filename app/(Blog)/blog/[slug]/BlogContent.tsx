@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { PortableText, PortableTextReactComponents } from "next-sanity";
 import { SiFacebook, SiLinkedin, SiX } from "react-icons/si";
 import Link from "next/link";
+import Image from "next/image";
 
 export const runtime = "edge";
 
@@ -88,12 +89,16 @@ export default async function BlogContent({
             </div>
             <div className="lg:col-span-10 lg:col-start-2">
               <div className="relative top-10 z-10">
-                <img
+                <Image
                   src={imageURL}
                   width={1600}
                   height={850}
-                  alt="Beginner's guide to GitHub repositories: How to create your first repo"
+                  alt="Blog post hero image"
                   className="aspect-video rounded-md object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 />
               </div>
             </div>

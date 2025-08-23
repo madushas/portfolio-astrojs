@@ -1,6 +1,6 @@
 import { developerEvents, DeveloperEventType } from "@/data/events";
 import React, { useRef, HTMLProps } from "react";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { m, useTransform, useScroll } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 import SectionContainer from "../shared/SectionContainer";
 
@@ -22,11 +22,11 @@ const HorizontalScrollCarousel = () => {
   return (
     <section ref={targetRef} className="relative h-[200vh]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-4">
+        <m.div style={{ x }} className="flex gap-4">
           {developerEvents.map((card) => {
             return <Card card={card} key={card.id} />;
           })}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

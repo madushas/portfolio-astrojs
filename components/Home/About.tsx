@@ -3,7 +3,7 @@
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import MyImage from "@/public/images/me.jpg";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import Certificates from "@/components/Home/Certifications";
 
 const stats = [
@@ -26,13 +26,13 @@ export default function About(
     <section className="relative py-8" {...props}>
       <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
         <div className="relative sm:py-16 lg:py-0">
-          <motion.div
+          <m.div
             aria-hidden="true"
             className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
             style={{ y: y1, x: x1 }}
           >
             <div className="bg-popover absolute inset-y-0 right-1/2 w-full rounded-r-3xl lg:right-72" />
-            <motion.svg
+            <m.svg
               className="absolute top-8 left-1/2 -ml-3 lg:top-12 lg:-right-8 lg:left-auto"
               width={404}
               height={392}
@@ -63,8 +63,8 @@ export default function About(
                 height={392}
                 fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
               />
-            </motion.svg>
-          </motion.div>
+            </m.svg>
+          </m.div>
           <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0 lg:py-16">
             <div className="relative mx-auto mb-16 overflow-hidden rounded-2xl pt-64 shadow-xl md:mx-4">
               <Image

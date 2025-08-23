@@ -32,7 +32,7 @@ const specialties = [
   },
 ];
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import React from "react";
 
 export default function Services(props: React.HTMLProps<HTMLDivElement>) {
@@ -61,7 +61,7 @@ export default function Services(props: React.HTMLProps<HTMLDivElement>) {
           </div>
           <div className="mx-auto mt-12 grid max-w-sm grid-cols-1 gap-x-8 gap-y-10 sm:max-w-none md:grid-cols-2 lg:grid-cols-4">
             {specialties.map((specialty) => (
-              <motion.div
+              <m.div
                 key={specialty.name}
                 className="flex-col justify-center space-y-4 text-center"
                 variants={{
@@ -82,7 +82,7 @@ export default function Services(props: React.HTMLProps<HTMLDivElement>) {
                   <h3 className="text-lg font-bold">{specialty.name}</h3>
                   <p className="">{specialty.description}</p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

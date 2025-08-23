@@ -1,6 +1,6 @@
 import React, { HTMLProps, useState } from "react";
 import { BriefcaseIcon, ChevronDownIcon, ExternalLinkIcon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { experiences } from "@/data/experiences";
 
 const ExperienceSection = (props: Readonly<HTMLProps<HTMLDivElement>>) => {
@@ -11,7 +11,7 @@ const ExperienceSection = (props: Readonly<HTMLProps<HTMLDivElement>>) => {
       {...props}
       className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"
     >
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -24,11 +24,11 @@ const ExperienceSection = (props: Readonly<HTMLProps<HTMLDivElement>>) => {
           A journey through my professional experience and the impact I&apos;ve
           made along the way.
         </p>
-      </motion.div>
+      </m.div>
 
       <div className="grid gap-8">
         {experiences.map((exp, index) => (
-          <motion.div
+          <m.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ const ExperienceSection = (props: Readonly<HTMLProps<HTMLDivElement>>) => {
 
               <AnimatePresence>
                 {expandedId === index && (
-                  <motion.div
+                  <m.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -104,11 +104,11 @@ const ExperienceSection = (props: Readonly<HTMLProps<HTMLDivElement>>) => {
                       Visit Company
                       <ExternalLinkIcon className="ml-1 h-4 w-4" />
                     </a>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>

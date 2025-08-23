@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -47,7 +47,7 @@ export default function FloatingNav() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.nav
+        <m.nav
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
@@ -66,7 +66,7 @@ export default function FloatingNav() {
                 )}
               >
                 {activeSection === item.href.slice(1) && (
-                  <motion.div
+                  <m.div
                     layoutId="active-nav"
                     className="absolute inset-0 bg-primary rounded-full"
                     transition={{ type: "spring", duration: 0.6 }}
@@ -78,7 +78,7 @@ export default function FloatingNav() {
             {/* add a theme toglle */}
             <ThemeToggle className="ml-2" />
           </div>
-        </motion.nav>
+        </m.nav>
       )}
     </AnimatePresence>
   );

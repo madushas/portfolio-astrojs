@@ -4,7 +4,7 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export function ThemeToggle({
@@ -40,7 +40,7 @@ export function ThemeToggle({
       >
         <AnimatePresence mode="wait" initial={false}>
           {isDarkMode ? (
-            <motion.div
+            <m.div
               key="sun"
               initial={{ opacity: 0, rotate: -45 }}
               animate={{ opacity: 1, rotate: 0 }}
@@ -48,9 +48,9 @@ export function ThemeToggle({
               transition={{ duration: 0.2 }}
             >
               <Sun />
-            </motion.div>
+            </m.div>
           ) : (
-            <motion.div
+            <m.div
               key="moon"
               initial={{ opacity: 0, rotate: 45 }}
               animate={{ opacity: 1, rotate: 0 }}
@@ -58,7 +58,7 @@ export function ThemeToggle({
               transition={{ duration: 0.2 }}
             >
               <Moon />
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </Button>

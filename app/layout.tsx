@@ -4,6 +4,7 @@
 import { IBM_Plex_Sans, Chivo } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
+import { FramerMotionProvider } from "@/components/shared/FramerMotionProvider";
 import Footer from "@/components/shared/Footer";
 import { cn } from "@/lib/utils";
 import { CSPostHogProvider } from "./providers";
@@ -34,8 +35,10 @@ export default function Layout({
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system">
-            {children}
-            <Footer />
+            <FramerMotionProvider>
+              {children}
+              <Footer />
+            </FramerMotionProvider>
           </ThemeProvider>
         </body>
       </CSPostHogProvider>

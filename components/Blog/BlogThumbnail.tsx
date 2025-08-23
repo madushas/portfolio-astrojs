@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Post } from "@/sanity/schema";
 import Link from "next/link";
+import Image from "next/image";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 interface PostThumbnailProps
@@ -25,15 +26,19 @@ export default function PostThumbnail({
       <div className={cn("rounded-lg")}>
         <Link className="block shrink" href={`/blog/${post.slug.current}`}>
           <div className="flex h-full items-center overflow-hidden rounded-lg">
-            <img
+            <Image
               alt="Post thumbnail"
               src={post.imageURL}
-              decoding="async"
-              loading="lazy"
+              width={800}
+              height={450}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className={cn(
                 "aspect-video w-full rounded-lg object-cover transition-transform duration-600 ease-in hover:scale-[1.02]",
                 type === "featured" && "lg:aspect-square",
               )}
+              priority={type === "featured"}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
           </div>
         </Link>

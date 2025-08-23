@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
@@ -61,7 +61,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <motion.div
+    <m.div
       className={cn(
         "z-50 mx-auto w-full transition-all duration-500 ease-in-out",
         isFloating
@@ -87,7 +87,7 @@ export default function NavBar() {
           )}
         >
           {/* Logo - hide when floating */}
-          <motion.h3
+          <m.h3
             className={cn(
               "text-primary font-mono text-xl font-black transition-all duration-500",
               isFloating
@@ -96,7 +96,7 @@ export default function NavBar() {
             )}
           >
             <Link href="/">://madusha</Link>
-          </motion.h3>
+          </m.h3>
 
           {/* Navigation Items */}
           <div
@@ -128,7 +128,7 @@ export default function NavBar() {
                 >
                   {/* Active indicator */}
                   {isActive && (
-                    <motion.div
+                    <m.div
                       className={cn(
                         "absolute rounded-full",
                         isFloating
@@ -159,7 +159,7 @@ export default function NavBar() {
           </div>
 
           {/* Theme Toggle - hide when floating */}
-          <motion.div
+          <m.div
             className={cn(
               "transition-all duration-500",
               isFloating
@@ -168,10 +168,10 @@ export default function NavBar() {
             )}
           >
             <ThemeToggle />
-          </motion.div>
+          </m.div>
         </nav>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -195,7 +195,7 @@ export function BlogNavBar() {
             href="/blog"
           >
             <span>Blog</span>
-            <motion.div
+            <m.div
               className="bg-primary absolute bottom-0 left-0 -z-10 h-1 rounded-full w-full"
               layoutId="blog-navbar"
               transition={{

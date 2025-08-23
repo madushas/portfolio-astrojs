@@ -6,15 +6,19 @@ import Projects from "./Projects";
 import Services from "./Services";
 import TechStack from "./TechStack";
 import TopArticles from "./TopArticles";
-import { AuroraBackground } from "../ui/Aurora";
 import ContactMe from "./ContactMe";
-import React from "react";
+import React, { Suspense } from "react";
 import ExperienceSection from "./Experince";
+
+// Dynamic import for heavy components
+const Spotlight = React.lazy(() => import("../ui/animated-background"));
 
 export default function HomePage() {
   return (
     <>
-      <AuroraBackground variant="classic" className="absolute inset-0 overflow-hidden" />
+      <Suspense fallback={<div className="absolute inset-0 bg-background" />}>
+        <Spotlight />
+      </Suspense>
       <Hero id="home" />
       <Services id="services" />
       <TechStack id="techstack" />
