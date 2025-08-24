@@ -1,3 +1,15 @@
+export const GetAllProjects = `*[_type == "project"]{
+	_id,
+	title,
+	description,
+	license,
+	image,
+	year,
+	"technologies": coalesce(technologies, []),
+	"tags": coalesce(tags, []),
+	githubRepo,
+	demoLink
+}`;
 // Centralized Sanity queries (GROQ)
 export const GetTopPostsSortByDate = `*[_type == "post"]{_id, title, description, publishedAt, author -> { name }, slug, categories[] -> { title }, mainImage}| order(publishedAt desc)`;
 

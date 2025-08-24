@@ -6,11 +6,11 @@ import {
   CodeIcon,
   RocketIcon,
 } from "lucide-react";
-import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
 import { m } from "framer-motion";
+import { SanityImage } from "../shared/SanityImage";
 
 export default function ProjectCard({
   title,
@@ -36,16 +36,12 @@ export default function ProjectCard({
       )}
     >
       <div className="p-4">
-        <Image
-          src={image}
-          alt={title}
-          width={350}
-          height={200}
-          className="aspect-video w-full rounded-lg object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-        />
+        {typeof image === "object" && "asset" in image ? (
+          <SanityImage asset={image.asset} alt={title} />
+        ) : (
+          // Optionally handle StaticImageData, e.g.:
+          <img src={image.src} alt={title} />
+        )}
         <div className="m-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
