@@ -2,7 +2,7 @@
 
 import { MapPin } from "lucide-react";
 import Image from "next/image";
-import MyImage from "@/public/images/me.jpg";
+import MyImage from "@/public/images/me.webp";
 import { m, useScroll, useTransform } from "framer-motion";
 import Certificates from "@/components/Home/Certifications";
 

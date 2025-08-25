@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import GHAS from "@/public/images/certifications/ghas.png";
+import GHAS from "@/public/images/certifications/ghas.webp";
 import AI102 from "@/public/images/certifications/ai-102.svg";
 
 const certs = [

@@ -1,106 +1,101 @@
-import React, { HTMLProps, JSX } from "react";
-import { Button, ButtonProps } from "../ui/button";
+// hero.tsx
+"use client";
+import React, { HTMLProps } from "react";
+import { Button } from "../ui/button";
 import Image from "next/image";
-import { useScroll, useTransform, m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Download, Mail } from "lucide-react";
-
-import HeroImage from "@/public/images/profile.webp";
 import { SiLinkedin, SiX, SiGithub } from "react-icons/si";
+import HeroImage from "@/public/images/profile.webp";
+import Spotlight from "../ui/animated-background";
 
-const socialMedia: {
-  text: string;
-  url: string;
-  type: ButtonProps["variant"];
-  icon: JSX.Element;
-}[] = [
+const socialMedia = [
   {
     text: "LinkedIn",
     url: "https://linkedin.com/in/madushasandaruwan",
-    type: "outline",
     icon: <SiLinkedin />,
   },
-  {
-    text: "GitHub",
-    url: "https://github.com/madushaS/",
-    type: "outline",
-    icon: <SiGithub />,
-  },
-  {
-    text: "Twitter",
-    url: "https://x.com/_MadushaS",
-    type: "outline",
-    icon: <SiX />,
-  },
+  { text: "GitHub", url: "https://github.com/madushaS/", icon: <SiGithub /> },
+  { text: "X", url: "https://x.com/_MadushaS", icon: <SiX /> },
 ];
 
-const stats = [
-  { value: "Community", label: "Advocate" },
-  { value: "GitHub", label: "Certified Developer" },
-];
-
-export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
+export default function Hero(props: HTMLProps<HTMLDivElement>) {
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 300], [0, 100]);
-  const y2 = useTransform(scrollY, [0, 300], [0, -60]);
+  const yText = useTransform(scrollY, [0, 300], [0, -50]);
+  const yImage = useTransform(scrollY, [0, 300], [0, 80]);
 
   return (
     <section
-      className="relative z-10 flex min-h-screen items-center justify-center px-4"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
       {...props}
     >
-      <m.div
-        style={{ y: y1 }}
-        className="container mx-auto flex flex-col items-center justify-between gap-12 px-4 md:flex-row md:px-6"
-      >
-        {/* Content Section */}
-        <div className="flex flex-col space-y-8 md:w-1/2">
-          <m.div
-            style={{ y: y2 }}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-4"
-          >
-            {/* Status Badge */}
-            <m.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
-            >
-              <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-              Available for work
-            </m.div>
+      {/* Animated Background */}
+      <Spotlight
+        translateY={-400}
+        xOffset={120}
+        gradientFirst="radial-gradient(70% 70% at 55% 30%, hsla(194, 82%, 35%, 0.1), transparent 80%)"
+        gradientSecond="radial-gradient(60% 60% at 50% 50%, hsla(270, 60%, 55%, 0.06), transparent 100%)"
+        gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, 0.04), transparent 100%)"
+      />
 
-            {/* Main Heading */}
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-lg font-medium md:text-xl">
-                👋 Hello, I&apos;m
-              </p>
-              <h1 className="text-gradient text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl 2xl:text-8xl">
-                Madusha Sandaruwan
-              </h1>
-              <div className="text-foreground/80 text-2xl font-semibold md:text-3xl lg:text-4xl">
-                Software Engineer (Systems & Architecture)
-              </div>
+      <m.div
+        className="z-10 container mx-auto flex flex-col-reverse items-center gap-12 md:flex-row"
+        style={{ y: yText }}
+      >
+        {/* Content */}
+        <div className="flex flex-col gap-6 md:w-2/3">
+          {/* Status Badge */}
+          <m.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+              Available for work
             </div>
           </m.div>
+
+          {/* Main Heading */}
+          <div className="space-y-2 overflow-hidden">
+            <m.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-muted-foreground text-lg md:text-xl"
+            >
+              👋 Hello, I&apos;m
+            </m.p>
+            <m.h1
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-gradient text-5xl font-bold tracking-tight md:text-7xl"
+            >
+              Madusha Sandaruwan
+            </m.h1>
+            <m.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-foreground/80 text-xl font-semibold md:text-2xl"
+            >
+              Software Engineer (Systems & Architecture)
+            </m.div>
+          </div>
 
           {/* Description */}
           <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
             className="text-muted-foreground text-lg leading-relaxed"
           >
-            I build robust, scalable software by bridging foundational
-            architecture with modern technology. My focus is on creating clean,
-            maintainable systems that solve complex problems from first
-            principles.
+            I design software systems that survive failure.
           </m.p>
 
-          {/* CTA Buttons */}
+          {/* CTA */}
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,20 +122,20 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
             </Button>
           </m.div>
 
-          {/* Social Links */}
+          {/* Social */}
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
             className="flex gap-4"
           >
-            {socialMedia.map((item, index) => (
+            {socialMedia.map((item) => (
               <Button
                 key={item.text}
                 asChild
-                variant={item.type}
+                variant="outline"
                 size="icon"
-                className="transition-transform hover:scale-110"
+                className="transition-transform hover:scale-110 hover:shadow-lg"
               >
                 <Link href={item.url} target="_blank" rel="noopener noreferrer">
                   {item.icon}
@@ -151,48 +146,30 @@ export default function Hero(props: Readonly<HTMLProps<HTMLDivElement>>) {
           </m.div>
         </div>
 
-        {/* Image Section */}
+        {/* Hero Image */}
         <m.div
+          className="relative flex items-center justify-center md:w-1/3"
+          style={{ y: yImage }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="relative md:w-1/2"
         >
           <div className="relative">
-            {/* Decorative elements */}
-            <div className="from-primary/20 absolute -inset-4 aspect-square rounded-full bg-gradient-to-r to-purple-500/20 blur-2xl" />
-            <div className="border-background relative aspect-square h-fit w-fit overflow-hidden rounded-full border-4 shadow-2xl">
-              {/* add image overlay to add modern look */}
-              <div className="from-primary/20 absolute inset-0 rounded-full bg-gradient-to-r to-purple-500/20 opacity-50 transition-opacity duration-500 hover:opacity-70" />
+            {/* Dynamic Glow / Gradient Halo */}
+            <div className="from-primary/20 animate-pulse-slow absolute -inset-4 rounded-full bg-gradient-to-r via-purple-400/20 to-pink-400/20 blur-3xl" />
+            {/* Image container */}
+            <div className="border-background relative h-72 w-72 overflow-hidden rounded-full border-4 shadow-2xl md:h-80 md:w-80">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/20 via-pink-400/10 to-blue-400/10 opacity-50 transition-opacity duration-500 hover:opacity-70" />
               <Image
                 src={HeroImage}
-                width={500}
-                height={500}
-                alt="Madusha Sandaruwan - Full-Stack Developer"
-                className="aspect-square object-cover transition-transform duration-500 hover:scale-105"
-                priority
-                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 500px"
+                alt="Madusha Sandaruwan"
+                width={320}
+                height={320}
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                 placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                priority
               />
             </div>
-
-            {/* Floating badges */}
-            <m.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="bg-background/80 absolute top-8 -right-4 rounded-lg border px-3 py-2 shadow-lg backdrop-blur-sm"
-            >
-              <div className="text-sm font-semibold">🤖 AI Specialist</div>
-            </m.div>
-
-            <m.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-              className="bg-background/80 absolute bottom-8 -left-4 rounded-lg border px-3 py-2 shadow-lg backdrop-blur-sm"
-            >
-              <div className="text-sm font-semibold">⚡ .NET Expert</div>
-            </m.div>
           </div>
         </m.div>
       </m.div>
