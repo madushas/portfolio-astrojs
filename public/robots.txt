@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://madusha.dev/sitemap-index.xml

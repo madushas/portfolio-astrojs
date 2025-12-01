@@ -1,0 +1,68 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-(--sp-9) border-t-2 border-border bg-background">
+  <div class="container-custom py-12 md:py-14 lg:py-16 xl:py-20">
+    <div class="grid gap-10 md:gap-12 md:grid-cols-3">
+      <div class="md:col-span-1">
+        <div class="mb-6 font-black text-xl text-foreground tracking-tighter uppercase">Madusha.</div>
+        <p class="text-sm text-muted-foreground leading-relaxed text-pretty max-w-xs font-medium">
+          Software engineer & CTO. Building systems that scale.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="mb-6 text-xs font-bold uppercase tracking-wider text-foreground">Navigation</h4>
+        <nav class="flex flex-col gap-3.5 text-sm text-muted-foreground font-medium">
+          <a href="#home" class="hover:text-primary transition-colors duration-200 w-fit">Home</a>
+          <a href="#services" class="hover:text-primary transition-colors duration-200 w-fit">What I Work On</a>
+          <a href="#projects" class="hover:text-primary transition-colors duration-200 w-fit">Projects</a>
+          <a href="#toparticles" class="hover:text-primary transition-colors duration-200 w-fit">Blog</a>
+          <a href="#contact" class="hover:text-primary transition-colors duration-200 w-fit">Contact</a>
+        </nav>
+      </div>
+      
+      <div>
+        <h4 class="mb-6 text-xs font-bold uppercase tracking-wider text-foreground">Contact</h4>
+        <div class="flex flex-col gap-3.5 text-sm text-muted-foreground font-medium">
+          <a href="mailto:work@madusha.dev" class="hover:text-primary transition-colors duration-200 w-fit">work@madusha.dev</a>
+          <a href="/resume.pdf" target="_blank" rel="noreferrer" class="hover:text-primary transition-colors duration-200 w-fit">Resume</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 md:mt-14 lg:mt-16 xl:mt-20 pt-6 md:pt-7 lg:pt-8 border-t-2 border-border flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+      <p class="text-xs text-muted-foreground font-bold uppercase tracking-wider">&copy; {year} Madusha Sandaruwan.</p>
+      <div class="text-xs text-muted-foreground font-mono uppercase tracking-wider">Built with Astro & Tailwind v4</div>
+    </div>
+  </div>
+  
+  <button
+    id="back-to-top"
+    aria-label="Back to top"
+    class="fixed bottom-6 right-6 md:bottom-7 md:right-7 lg:bottom-8 lg:right-8 h-11 w-11 md:h-12 md:w-12 flex items-center justify-center border-2 border-border bg-card text-foreground transition-all duration-300 opacity-0 pointer-events-none hover:border-primary hover:bg-primary hover:text-primary-foreground z-50"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+</footer>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  if (btn) {
+      const toggleVisibility = () => {
+        if (window.scrollY > 600) {
+            btn.classList.remove('opacity-0', 'pointer-events-none');
+            btn.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+            btn.classList.add('opacity-0', 'pointer-events-none');
+            btn.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+      };
+      
+      window.addEventListener('scroll', toggleVisibility);
+      btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+  }
+</script>

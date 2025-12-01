@@ -1,0 +1,83 @@
+---
+import { sanityClient, urlFor } from '../../lib/sanity';
+import SectionContainer from '../shared/SectionContainer.astro';
+
+// Fetch real blog posts from Sanity CMS
+const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
+  title,
+  "slug": slug.current,
+  publishedAt,
+  excerpt,
+  mainImage,
+  "categories": categories[]->title
+}`;
+
+const featuredPosts = await sanityClient.fetch(query);
+---
+
+<SectionContainer 
+  id="blog" 
+  title="Featured Posts" 
+  subtitle="Technical writing on systems, architecture, and software craftsmanship."
+>
+  <div slot="action">
+    <a 
+      href="/blog" 
+      class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-bold border-2 border-primary hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-300 uppercase tracking-wider text-sm"
+    >
+      View All Posts
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+    {featuredPosts.map((post: any) => (
+      <article class="group flex flex-col h-full">
+        <a href={`/blog/${post.slug}`} class="block overflow-hidden border-2 border-border mb-6 aspect-16/10 bg-secondary/20 relative">
+          {post.mainImage ? (
+            <img 
+              src={urlFor(post.mainImage).width(800).height(500).url()} 
+              alt={post.title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div class="w-full h-full flex items-center justify-center bg-secondary/30 text-muted-foreground">
+              <span class="font-mono text-sm uppercase">No Image</span>
+            </div>
+          )}
+          <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+        </a>
+
+        <div class="flex flex-col flex-1">
+          <div class="flex items-center gap-4 mb-4 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            <time datetime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+            </time>
+            <span class="w-px h-3 bg-border"></span>
+            <span>{post.categories?.[0] || 'Tech'}</span>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-4 leading-tight uppercase tracking-tight group-hover:text-primary transition-colors">
+            <a href={`/blog/${post.slug}`}>
+              {post.title}
+            </a>
+          </h3>
+          
+          <p class="text-muted-foreground leading-relaxed mb-6 line-clamp-3 text-sm flex-1">
+            {post.excerpt}
+          </p>
+
+          <div class="pt-4 border-t border-border mt-auto">
+            <a 
+              href={`/blog/${post.slug}`}
+              class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors"
+            >
+              Read Article
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</SectionContainer>

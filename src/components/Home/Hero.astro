@@ -1,0 +1,129 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/my_hero.png';
+
+// Social links
+const socialMedia = [
+	{ text: 'LinkedIn', url: 'https://linkedin.com/in/madushasandaruwan', icon: 'linkedin' },
+	{ text: 'GitHub', url: 'https://github.com/madushaS/', icon: 'github' },
+	{ text: 'X', url: 'https://x.com/_MadushaS', icon: 'x' },
+];
+---
+
+<section id="home" class="relative min-h-dvh flex flex-col justify-center overflow-hidden bg-background pt-24 pb-12 md:py-0">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 z-0 opacity-[0.05] pointer-events-none" style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+  <div class="container-custom relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center">
+      
+      <!-- Text Content -->
+      <div class="lg:col-span-7 flex flex-col gap-5 md:gap-6 lg:gap-10 order-2 lg:order-1">
+        
+        <!-- Identity Block -->
+        <div class="space-y-1 md:space-y-2">
+          <div class="overflow-hidden">
+            <h1 class="text-[clamp(2rem,8vw,3.5rem)] md:text-[clamp(2.5rem,6vw,4rem)] lg:text-[clamp(3rem,5vw,4.5rem)] xl:text-[clamp(3.5rem,4.5vw,5.5rem)] font-black tracking-tighter text-foreground uppercase leading-[0.85] motion-reveal">
+              Madusha
+            </h1>
+          </div>
+          <div class="overflow-hidden">
+            <h1 class="text-[clamp(2rem,8vw,3.5rem)] md:text-[clamp(2.5rem,6vw,4rem)] lg:text-[clamp(3rem,5vw,4.5rem)] xl:text-[clamp(3.5rem,4.5vw,5.5rem)] font-black tracking-tighter text-primary uppercase leading-[0.85] motion-reveal" style="transition-delay: 100ms">
+              Sandaruwan
+            </h1>
+          </div>
+        </div>
+
+        <!-- Divider & Role -->
+        <div class="border-y-2 border-foreground py-3 md:py-4 lg:py-6 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-3 motion-opacity opacity-0">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-base md:text-xl font-mono font-bold uppercase tracking-tight">
+            <span>Software Engineer</span>
+            <span class="text-primary hidden md:inline">//</span>
+            <span class="w-full md:w-auto h-px bg-border md:hidden"></span>
+            <span>CTO</span>
+          </div>
+          <div class="text-xs md:text-sm font-mono text-muted-foreground uppercase tracking-widest">
+            Based in Colombo, LK
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-8 motion-opacity opacity-0">
+          <p class="text-base md:text-lg text-muted-foreground font-medium leading-relaxed text-pretty">
+            Building software and leading engineering at a startup. I focus on architecture, infrastructure, and creating systems that are simple to understand and maintain.
+          </p>
+          
+          <!-- CTA -->
+          <div class="flex flex-col gap-4 justify-start">
+            <div class="flex flex-wrap gap-2.5 md:gap-3 lg:gap-4">
+              <a href="#projects" class="flex-1 min-w-[140px] sm:flex-none inline-flex items-center justify-center px-5 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 text-sm md:text-base font-bold text-background bg-foreground hover:bg-primary transition-colors duration-300 uppercase tracking-wider whitespace-nowrap">
+                Selected Work
+              </a>
+            </div>
+            
+            <!-- Socials -->
+            <div class="flex gap-3 md:gap-4 mt-1">
+              {socialMedia.map((item) => (
+                <a href={item.url} target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors" aria-label={item.text}>
+                  {item.icon === 'linkedin' && <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9H12.92v1.636h.049c.496-.94 1.712-1.929 3.521-1.929 3.765 0 4.46 2.479 4.46 5.702v6.043zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>}
+                  {item.icon === 'github' && <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>}
+                  {item.icon === 'x' && <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Area -->
+      <div class="lg:col-span-5 relative order-1 lg:order-2 flex justify-center lg:justify-end mt-8 lg:mt-0">
+        <div class="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[480px] aspect-3/4">
+          <!-- Solid Offset Shadow (The "Block") -->
+          <div class="absolute top-2 right-2 md:top-3 md:right-3 lg:top-4 lg:right-4 w-full h-full bg-primary z-0 motion-opacity opacity-0"></div>
+          
+          <!-- Image Container -->
+          <div class="relative z-10 w-full h-full bg-card overflow-hidden motion-reveal-image">
+            <Image
+              src={heroImage}
+              alt="Madusha Sandaruwan"
+              width={500}
+              height={667}
+              class="h-full w-full object-cover object-center transition-all duration-700"
+              loading="eager"
+              quality={85}
+              format="webp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger } from "motion";
+
+  // Mechanical Reveal Animations
+  const EASE_MECHANICAL = [0.25, 1, 0.5, 1] as const;
+
+  // Text Slide Up
+  animate(
+    ".motion-reveal",
+    { y: ["100%", "0%"] } as any,
+    { duration: 0.8, easing: EASE_MECHANICAL, delay: stagger(0.1) } as any
+  );
+
+  // Opacity Fade In
+  animate(
+    ".motion-opacity",
+    { opacity: [0, 1] } as any,
+    { duration: 0.5, delay: 0.6, easing: "ease-out" } as any
+  );
+
+  // Image Reveal (Clip Path or Slide)
+  animate(
+    ".motion-reveal-image",
+    { clipPath: ["inset(100% 0 0 0)", "inset(0 0 0 0)"] } as any,
+    { duration: 1, delay: 0.2, easing: EASE_MECHANICAL } as any
+  );
+</script>

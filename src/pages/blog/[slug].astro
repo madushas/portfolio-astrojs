@@ -1,0 +1,126 @@
+---
+import { PortableText } from 'astro-portabletext';
+import PortableTextImage from '../../components/blog/PortableTextImage.astro';
+import Navbar from '../../components/shared/Navbar.svelte';
+import Layout from '../../layouts/Layout.astro';
+import { sanityClient, urlFor } from '../../lib/sanity';
+
+interface Post {
+	title: string;
+	slug: string;
+	publishedAt: string;
+	excerpt: string;
+	body: any;
+	mainImage?: any;
+	categories?: string[];
+	author?: string;
+}
+
+export async function getStaticPaths() {
+	const query = `*[_type == "post"] {
+    title,
+    "slug": slug.current,
+    publishedAt,
+    excerpt,
+    body,
+    mainImage,
+    "categories": categories[]->title,
+    "author": author->name
+  }`;
+	const posts: Post[] = await sanityClient.fetch(query);
+
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+interface Props {
+	post: Post;
+}
+
+const { post } = Astro.props as Props;
+---
+
+<Layout title={`${post.title} - Madusha Sandaruwan`} description={post.excerpt}>
+  <Navbar client:load pathname={Astro.url.pathname} />
+  
+  <main class="pt-32 pb-24 min-h-screen">
+    <article class="container-custom max-w-5xl mx-auto">
+      <header class="mb-16 border-b-2 border-border pb-12">
+        <div class="flex flex-wrap items-center gap-6 mb-8 text-sm font-mono uppercase tracking-wider text-muted-foreground">
+          <div class="flex items-center gap-2">
+            <span class="text-primary font-bold">/</span>
+            <span>{post.categories?.[0] || 'Tech'}</span>
+          </div>
+          <span class="w-px h-3 bg-border"></span>
+          <time datetime={post.publishedAt}>
+            {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          </time>
+          <span class="w-px h-3 bg-border"></span>
+          <span>5 min read</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-[0.9] tracking-tighter uppercase text-balance">
+          {post.title}
+        </h1>
+
+        {post.mainImage && (
+          <div class="w-full aspect-21/9 bg-secondary/20 border-2 border-border overflow-hidden mb-12">
+            <img 
+              src={urlFor(post.mainImage).width(1200).height(600).auto('format').url()}
+              srcset={`
+                ${urlFor(post.mainImage).width(640).height(320).auto('format').url()} 640w,
+                ${urlFor(post.mainImage).width(1200).height(600).auto('format').url()} 1200w,
+                ${urlFor(post.mainImage).width(2000).height(1000).auto('format').url()} 2000w
+              `}
+              sizes="(max-width: 768px) 100vw, 80vw"
+              alt={post.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        )}
+        
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-lg">
+              {post.author ? post.author.charAt(0) : 'M'}
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-bold uppercase tracking-wider">{post.author || 'Madusha Sandaruwan'}</span>
+              <span class="text-xs text-muted-foreground font-mono">Author</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Blog Content -->
+      <div class="max-w-4xl mx-auto mb-24">
+        <div class="blog-content text-foreground/90">
+          <PortableText 
+            value={post.body}
+            components={{
+              type: {
+                image: PortableTextImage,
+              },
+            }}
+          />
+        </div>
+      </div>
+
+      <div class="pt-12 border-t-2 border-border max-w-3xl mx-auto">
+        <a 
+          href="/blog"
+          class="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors group"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-1"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          Back to Engineering Log
+        </a>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+

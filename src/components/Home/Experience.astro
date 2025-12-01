@@ -1,0 +1,61 @@
+---
+import { experiences } from '../../data/experiences';
+import SectionContainer from '../shared/SectionContainer.astro';
+---
+
+<SectionContainer title="Work Experience" subtitle="A journey through my professional experience and the impact I've made along the way.">
+  <ol class="relative mx-auto max-w-4xl border-l-2 border-border/40 pl-8 md:pl-12">
+    {experiences.map((exp, index) => (
+      <li class="group relative mb-16 last:mb-0">
+         <!-- Node -->
+         <span class="absolute -left-[58px] top-2 grid h-10 w-10 place-content-center rounded-xl border-2 border-primary/30 bg-primary/10 text-xs font-bold text-primary shadow-md transition-all duration-300 group-hover:border-primary group-hover:bg-primary/20 group-hover:scale-110">
+           {index + 1}
+         </span>
+         
+         <!-- Card -->
+         <details class="group/details relative overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm transition-all duration-500 hover:border-primary/40 hover:shadow-lg open:border-primary/50 open:shadow-xl">
+            <summary class="flex w-full cursor-pointer items-start gap-5 px-6 py-6 text-left list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 md:gap-6 md:px-8 [&::-webkit-details-marker]:hidden">
+                <div class="mt-1 rounded-xl bg-primary/10 p-3 text-primary ring-1 ring-primary/20 transition-all duration-300 group-hover/details:bg-primary/15 group-hover/details:ring-primary/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <div class="flex-1 space-y-2">
+                    <div class="flex flex-wrap items-baseline justify-between gap-3">
+                       <h3 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">{exp.company}</h3>
+                       <div class="flex items-center gap-2.5 text-xs font-medium text-muted-foreground">
+                          <span class="whitespace-nowrap">{exp.duration}</span>
+                          <span class="inline-block h-1 w-1 rounded-full bg-border" />
+                          <span class="whitespace-nowrap">{exp.location}</span>
+                       </div>
+                    </div>
+                    <p class="text-base font-semibold text-foreground/90 md:text-lg">{exp.position}</p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-2 h-6 w-6 shrink-0 text-muted-foreground transition-all duration-300 group-open/details:rotate-180 group-open/details:text-primary"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            
+            <div class="overflow-hidden px-6 pb-8 pt-2 md:px-8 animate-in slide-in-from-top-2 duration-300">
+                <ul class="mb-6 space-y-3 text-sm leading-relaxed text-foreground/80 md:text-base">
+                    {exp.description.map((item) => (
+                       <li class="relative pl-5">
+                          <span class="absolute left-0 top-2.5 h-1.5 w-1.5 rounded-full bg-primary" />
+                          {item}
+                       </li>
+                    ))}
+                </ul>
+                <div class="mb-6 flex flex-wrap gap-2.5">
+                   {exp.technologies.map((tech) => (
+                      <span class="rounded-lg border border-border/60 bg-muted/50 px-3 py-1.5 text-xs font-medium tracking-wide text-foreground/90">
+                        {tech}
+                      </span>
+                   ))}
+                </div>
+                {exp.link && (
+                   <a href={exp.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                     Visit Company <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                   </a>
+                )}
+            </div>
+         </details>
+      </li>
+    ))}
+  </ol>
+</SectionContainer>

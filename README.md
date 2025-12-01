@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio - Astro + Svelte
 
-## Getting Started
+A modern, brutalist-themed portfolio website built with Astro and Svelte.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+**Note:** Despite the repository name "portfolio-nextjs", this project uses **Astro** (not Next.js). The repository was initially planned for Next.js but was rebuilt with Astro for better performance and flexibility.
+
+- **Framework:** Astro 5.x
+- **UI Components:** Svelte 5.x
+- **Styling:** Tailwind CSS 4.x
+- **CMS:** Sanity.io
+- **Animations:** Motion.js
+- **Deployment:** Cloudflare Pages
+
+## 📦 Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🏗️ Build
 
-## Learn More
+```bash
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+├── src/
+│   ├── components/      # Reusable components
+│   │   ├── Home/       # Homepage sections
+│   │   ├── shared/     # Shared components
+│   │   └── ui/         # UI primitives
+│   ├── layouts/        # Page layouts
+│   ├── pages/          # Route pages
+│   ├── styles/         # Global styles
+│   └── lib/            # Utilities & helpers
+├── public/             # Static assets
+└── astro.config.mjs    # Astro configuration
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ✨ Features
 
-## Deploy on Vercel
+- ✅ Dark/Light mode toggle
+- ✅ Smooth scroll animations (Lenis)
+- ✅ SEO optimized with JSON-LD
+- ✅ Responsive design
+- ✅ Accessibility compliant (WCAG AA)
+- ✅ TypeScript support
+- ✅ Sanity CMS integration
+- ✅ Contact form (Web3Forms)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Copy `.env.example` to `.env` and fill in your credentials:
+
+```env
+PUBLIC_WEB3FORM_ACCESS_KEY=your_key_here
+PUBLIC_SANITY_DATASET=production
+PUBLIC_SANITY_PROJECT_ID=your_project_id
+PUBLIC_POSTHOG_KEY=your_key_here
+PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+```
+
+## 📝 License
+
+MIT License - feel free to use this as a template for your own portfolio!
+
+## 👤 Author
+
+**Madusha Sandaruwan**
+- GitHub: [@madushas](https://github.com/madushas)
+- LinkedIn: [madushas](https://linkedin.com/in/madushas)
+- Twitter: [@_MadushaS](https://twitter.com/_MadushaS)

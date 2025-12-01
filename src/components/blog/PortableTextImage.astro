@@ -1,0 +1,40 @@
+---
+import { urlFor } from '../../lib/sanity';
+
+const { node, value } = Astro.props;
+
+// astro-portabletext passes 'node' or 'value' depending on version/context
+const imageData = node || value;
+const asset = imageData?.asset;
+const alt = imageData?.alt || imageData?.caption || 'Blog image';
+
+const imageUrl = asset ? urlFor(asset).width(1400).auto('format').quality(90).url() : '';
+const imageSrcset = asset
+	? `
+  ${urlFor(asset).width(640).auto('format').quality(90).url()} 640w,
+  ${urlFor(asset).width(1024).auto('format').quality(90).url()} 1024w,
+  ${urlFor(asset).width(1400).auto('format').quality(90).url()} 1400w
+`.trim()
+	: '';
+---
+
+{imageUrl ? (
+  <figure class="my-16 w-full">
+    <div class="border-4 border-primary/20 bg-card p-4 rounded-lg shadow-lg">
+      <img 
+        src={imageUrl} 
+        srcset={imageSrcset}
+        sizes="(max-width: 768px) 100vw, 80vw"
+        alt={alt}
+        class="w-full h-auto rounded"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    {imageData?.caption && (
+      <figcaption class="mt-6 text-center text-sm text-muted-foreground font-mono uppercase tracking-wider">
+        → {imageData.caption}
+      </figcaption>
+    )}
+  </figure>
+) : null}

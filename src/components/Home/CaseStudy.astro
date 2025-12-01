@@ -1,0 +1,122 @@
+---
+import SectionContainer from '../shared/SectionContainer.astro';
+---
+
+<SectionContainer id="casestudy" title="Featured Case Study" subtitle="Solving complex problems with scalable architecture.">
+  <div class="border-2 border-border bg-card overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      
+      <!-- Content Side -->
+      <div class="p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center border-b-2 lg:border-b-0 lg:border-r-2 border-border">
+        
+        <!-- Header -->
+        <div class="mb-6 md:mb-8">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 text-xs font-bold uppercase tracking-widest bg-primary text-primary-foreground">
+              Migration
+            </span>
+            <span class="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+              2024 // FinTech
+            </span>
+          </div>
+          <h3 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter text-foreground leading-none mb-2">
+            Enterprise Event-Driven Architecture
+          </h3>
+          <p class="text-lg font-bold text-primary">
+            Role: CTO / Lead Architect
+          </p>
+        </div>
+
+        <!-- Problem / Solution / Outcome -->
+        <div class="space-y-6 md:space-y-8">
+          
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">The Challenge</h4>
+            <p class="text-foreground/90 leading-relaxed">
+              A legacy monolithic application was facing severe scalability bottlenecks during peak transaction periods, resulting in high latency and occasional downtime. The tight coupling made feature development slow and risky.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">The Solution</h4>
+            <p class="text-foreground/90 leading-relaxed">
+              Designed and led the migration to a microservices architecture using <strong>.NET 8</strong> and <strong>Azure Kubernetes Service (AKS)</strong>. Implemented <strong>Apache Kafka</strong> as the backbone for asynchronous messaging to decouple services and ensure eventual consistency.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">The Outcome</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-3">
+                <span class="text-primary font-bold">→</span>
+                <span class="text-foreground/90"><strong>50%</strong> reduction in infrastructure costs via auto-scaling.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary font-bold">→</span>
+                <span class="text-foreground/90"><strong>99.99%</strong> uptime achieved during peak load seasons.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary font-bold">→</span>
+                <span class="text-foreground/90"><strong>10x</strong> improvement in system throughput.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="mt-8 pt-6 border-t-2 border-border flex flex-wrap gap-2">
+          {["C#", ".NET 8", "Azure AKS", "Kafka", "Redis", "Terraform"].map((tech) => (
+            <span class="px-2 py-1 text-xs font-bold uppercase tracking-wider border border-border bg-secondary/10 text-muted-foreground">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+      </div>
+
+      <!-- Visual Side -->
+      <div class="bg-secondary/5 p-6 md:p-8 lg:p-10 xl:p-12 flex items-center justify-center relative overflow-hidden">
+        <!-- Abstract Architectural Diagram Representation -->
+        <div class="relative w-full aspect-square max-w-md">
+          
+          <!-- Grid Background -->
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
+          
+          <!-- Central Hub (Kafka) -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-background border-2 border-primary flex items-center justify-center z-10 shadow-[4px_4px_0px_0px_rgba(var(--primary),1)]">
+            <span class="font-black text-xs uppercase tracking-widest">Kafka</span>
+          </div>
+
+          <!-- Services (Orbiting) -->
+          <div class="absolute top-1/4 left-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
+            <span class="font-bold text-[10px] uppercase">Auth</span>
+          </div>
+          <div class="absolute bottom-1/4 right-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
+            <span class="font-bold text-[10px] uppercase">Order</span>
+          </div>
+          <div class="absolute top-1/4 right-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
+            <span class="font-bold text-[10px] uppercase">Pay</span>
+          </div>
+          <div class="absolute bottom-1/4 left-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
+            <span class="font-bold text-[10px] uppercase">Inv</span>
+          </div>
+
+          <!-- Connecting Lines -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" stroke="currentColor" stroke-width="2">
+            <line x1="50%" y1="50%" x2="25%" y2="25%" />
+            <line x1="50%" y1="50%" x2="75%" y2="75%" />
+            <line x1="50%" y1="50%" x2="75%" y2="25%" />
+            <line x1="50%" y1="50%" x2="25%" y2="75%" />
+          </svg>
+
+          <!-- Floating Elements -->
+          <div class="absolute top-10 right-10 w-4 h-4 bg-primary/20 rounded-full animate-pulse"></div>
+          <div class="absolute bottom-10 left-10 w-6 h-6 border-2 border-primary/20 rounded-full"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</SectionContainer>

@@ -1,0 +1,61 @@
+---
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-sans/700.css';
+import '@fontsource-variable/chivo';
+import '../styles/global.css';
+import Footer from '../components/shared/Footer.astro';
+import SEO from '../components/shared/SEO.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'Madusha Sandaruwan - Portfolio' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<SEO title={title} description={description} />
+        <script is:inline>
+            // Dark mode initialization
+            const theme = (() => {
+                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                    return localStorage.getItem('theme');
+                }
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            })();
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            window.localStorage.setItem('theme', theme);
+        </script>
+        <script>
+            import Lenis from 'lenis';
+
+            const lenis = new Lenis();
+
+            function raf(time: number) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+        </script>
+	</head>
+	<body class="font-sans antialiased text-foreground bg-background transition-colors duration-300">
+		<!-- Skip to main content link for accessibility -->
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md">
+			Skip to main content
+		</a>
+		<slot />
+        <Footer />
+	</body>
+</html>

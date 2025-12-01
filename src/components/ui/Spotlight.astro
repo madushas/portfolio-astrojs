@@ -1,0 +1,97 @@
+---
+interface Props {
+	translateY?: number;
+	width?: number;
+	smallWidth?: number;
+	xOffset?: number;
+	duration?: number;
+}
+
+const {
+	translateY = -400,
+	width = 560,
+	smallWidth = 240,
+	xOffset = 120,
+	duration = 7,
+} = Astro.props;
+---
+
+<div class="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden animate-fade-in">
+  <!-- Left gradients -->
+  <div class="pointer-events-none absolute inset-0 z-30">
+    <div class="pointer-events-none absolute inset-0 bg-noise opacity-5" />
+  </div>
+
+  <div class="absolute top-0 left-0 h-screen w-screen animate-sway-left">
+    <div
+      class="absolute top-0 left-0 rounded-full"
+      style={`
+        transform: translateY(${translateY}px) rotate(-45deg);
+        width: ${width}px;
+        height: 1380px;
+        background: radial-gradient(70% 70% at 55% 30%, hsl(var(--primary) / 0.08), transparent 80%);
+      `}
+    />
+    <div
+      class="absolute top-0 left-0 rounded-full"
+      style={`
+        transform: rotate(-45deg) translate(5%, -50%);
+        width: ${smallWidth}px;
+        height: 1380px;
+        background: radial-gradient(60% 60% at 50% 50%, hsl(var(--accent) / 0.07), transparent 100%);
+      `}
+    />
+  </div>
+
+  <!-- Right gradients -->
+  <div class="absolute top-0 right-0 h-screen w-screen animate-sway-right">
+    <div
+      class="absolute top-0 right-0 rounded-full"
+      style={`
+        transform: translateY(${translateY}px) rotate(45deg);
+        width: ${width}px;
+        height: 1380px;
+        background: radial-gradient(70% 70% at 55% 30%, hsl(var(--primary) / 0.08), transparent 80%);
+      `}
+    />
+    <div
+      class="absolute top-0 right-0 rounded-full"
+      style={`
+        transform: rotate(45deg) translate(-5%, -50%);
+        width: ${smallWidth}px;
+        height: 1380px;
+        background: radial-gradient(60% 60% at 50% 50%, hsl(var(--accent) / 0.07), transparent 100%);
+      `}
+    />
+  </div>
+</div>
+
+<style define:vars={{ xOffset: `${xOffset}px`, duration: `${duration}s` }}>
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+  
+  .animate-sway-left {
+    animation: swayLeft var(--duration) ease-in-out infinite alternate;
+  }
+
+  .animate-sway-right {
+    animation: swayRight var(--duration) ease-in-out infinite alternate;
+  }
+
+  @keyframes swayLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(var(--xOffset)); }
+  }
+
+  @keyframes swayRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(var(--xOffset) * -1)); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+

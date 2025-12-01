@@ -1,0 +1,129 @@
+---
+import { Image } from 'astro:assets';
+import ProfileImage from '../../assets/images/me.webp';
+import { experiences } from '../../data/experiences';
+import SectionContainer from '../shared/SectionContainer.astro';
+import Certificates from './Certifications.astro';
+
+const profile = {
+	location: 'Colombo, Sri Lanka',
+	status: 'Building a startup',
+	focus: 'Engineering & Architecture',
+	email: 'hello@madusha.dev',
+};
+
+const stats = [
+	{ label: 'Years Experience', value: '6+' },
+	{ label: 'Projects Delivered', value: '25+' },
+	{ label: 'Certifications', value: 'component' },
+	{ label: 'Teams Led', value: '3' },
+];
+---
+
+<SectionContainer id="about" title="About Me" subtitle="The human behind the code.">
+  
+  <div class="grid grid-cols-1 lg:grid-cols-12 border-2 border-border bg-card">
+    
+    <!-- Left Column: Profile Dossier -->
+    <div class="lg:col-span-4 border-b-2 lg:border-b-0 lg:border-r-2 border-border p-6 md:p-7 lg:p-8 bg-secondary/5">
+      <div class="lg:sticky lg:top-24 space-y-6 md:space-y-7 lg:space-y-8">
+        
+        <!-- Avatar / Image Placeholder (Solid) -->
+        <div class="aspect-square w-full border-2 border-border bg-background relative overflow-hidden group">
+            <div class="absolute inset-0 flex items-center justify-center text-muted-foreground font-mono text-sm uppercase tracking-widest group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                [Profile_IMG]
+            </div>
+            <!-- Actual image would go here -->
+            <Image src={ProfileImage} alt="Madusha" width={300} height={300} class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0" />
+        </div>
+
+        <!-- Info Table -->
+        <div class="space-y-4 font-mono text-sm">
+          <div class="flex justify-between border-b border-border pb-2">
+            <span class="text-muted-foreground uppercase">Location</span>
+            <span class="font-bold">{profile.location}</span>
+          </div>
+          <div class="flex justify-between border-b border-border pb-2">
+            <span class="text-muted-foreground uppercase">Status</span>
+            <span class="font-bold text-primary">{profile.status}</span>
+          </div>
+          <div class="flex justify-between border-b border-border pb-2">
+            <span class="text-muted-foreground uppercase">Focus</span>
+            <span class="font-bold">{profile.focus}</span>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <blockquote class="text-lg font-bold leading-tight border-l-4 border-primary pl-4 py-2">
+          "Good software is boring. It just works, and nobody notices."
+        </blockquote>
+
+      </div>
+    </div>
+
+    <!-- Right Column: Bio & Details -->
+    <div class="lg:col-span-8">
+      
+      <!-- Bio Section -->
+      <div class="p-6 md:p-8 lg:p-10 xl:p-12 border-b-2 border-border">
+        <h3 class="text-xl md:text-2xl font-bold uppercase tracking-widest mb-5 md:mb-6 text-muted-foreground">01 // Biography</h3>
+        <div class="prose prose-base md:prose-lg max-w-none text-foreground/90 leading-relaxed">
+          <p class="mb-6">
+            I'm currently CTO at my own startup, where I spend most of my time writing code, designing systems, and figuring out how to make things work at scale without overcomplicating them.
+          </p>
+          <p>
+            My engineering journey started in 2013 out of pure curiosity—trying to understand how things actually work. These days, I focus on backend architecture, infrastructure, and the kind of problems that keep systems running reliably.
+          </p>
+          <p>
+            Outside of code, I read a lot about history and philosophy. I've found that understanding systems—whether technical or human—benefits from a broader perspective.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 border-b-2 border-border divide-x-2 divide-border">
+        {stats.map((stat) => (
+          <div class="p-4 md:p-5 lg:p-6 flex flex-col justify-between aspect-square hover:bg-foreground hover:text-background transition-colors duration-300 group">
+            <span class="text-xs font-bold uppercase tracking-widest opacity-60 group-hover:opacity-80">{stat.label}</span>
+            <span class="text-3xl md:text-4xl font-black tracking-tighter mt-auto">
+              {stat.value === "component" ? <div><Certificates /></div> : stat.value}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Experience Section -->
+      <div class="p-6 md:p-8 lg:p-10 xl:p-12">
+        <h3 class="text-xl md:text-2xl font-bold uppercase tracking-widest mb-6 md:mb-8 text-muted-foreground">02 // Experience</h3>
+        
+        <div class="space-y-0">
+          {experiences.map((job) => (
+            <div class="group border-l-2 border-border pl-8 py-6 relative hover:border-primary transition-colors duration-300">
+              <div class="absolute -left-[9px] top-6 w-4 h-4 bg-background border-2 border-border group-hover:border-primary group-hover:bg-primary transition-colors duration-300"></div>
+              
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4 mb-3">
+                <h4 class="text-xl font-bold group-hover:text-primary transition-colors">{job.company}</h4>
+                <span class="font-mono text-sm text-muted-foreground">{job.duration}</span>
+              </div>
+              <p class="text-lg font-medium mb-3">{job.position}</p>
+              <ul class="list-disc list-outside ml-4 space-y-1 mb-4">
+                {job.description.map((desc) => (
+                  <li class="text-muted-foreground leading-relaxed max-w-2xl">{desc}</li>
+                ))}
+              </ul>
+              
+              <div class="flex flex-wrap gap-2">
+                {job.technologies.map((tech) => (
+                  <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 border border-border bg-background text-muted-foreground">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</SectionContainer>

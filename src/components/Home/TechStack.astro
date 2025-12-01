@@ -1,0 +1,165 @@
+---
+import SectionContainer from '../shared/SectionContainer.astro';
+
+const techCategories = [
+	{
+		category: 'Languages',
+		techs: [
+			{
+				name: 'TypeScript',
+				icon: 'typescript',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+			},
+			{
+				name: 'C#',
+				icon: 'csharp',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+			},
+			{
+				name: 'Go',
+				icon: 'go',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
+			},
+			{
+				name: 'Python',
+				icon: 'python',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+			},
+			{
+				name: 'C++',
+				icon: 'cplusplus',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+			},
+		],
+	},
+	{
+		category: 'Frameworks',
+		techs: [
+			{
+				name: '.NET',
+				icon: 'dotnet',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg',
+			},
+			{
+				name: 'Hono',
+				icon: 'hono',
+				logo: 'https://raw.githubusercontent.com/honojs/hono/main/docs/images/hono-logo.png',
+			},
+			{
+				name: 'Svelte',
+				icon: 'svelte',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg',
+			},
+			{
+				name: 'Next.js',
+				icon: 'nextjs',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+			},
+			{
+				name: 'Astro',
+				icon: 'astro',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg',
+			},
+		],
+	},
+	{
+		category: 'Data & Messaging',
+		techs: [
+			{
+				name: 'PostgreSQL',
+				icon: 'postgresql',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+			},
+			{
+				name: 'MySQL',
+				icon: 'mysql',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+			},
+			{
+				name: 'MongoDB',
+				icon: 'mongodb',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+			},
+			{
+				name: 'Kafka',
+				icon: 'kafka',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg',
+			},
+			{
+				name: 'Redis',
+				icon: 'redis',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
+			},
+		],
+	},
+	{
+		category: 'Cloud & DevOps',
+		techs: [
+			{
+				name: 'Azure',
+				icon: 'azure',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+			},
+			{
+				name: 'GitHub Actions',
+				icon: 'githubactions',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg',
+			},
+			{
+				name: 'Docker',
+				icon: 'docker',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+			},
+			{
+				name: 'Linux',
+				icon: 'linux',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
+			},
+			{
+				name: 'AWS',
+				icon: 'aws',
+				logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
+			},
+		],
+	},
+];
+---
+
+<SectionContainer id="techstack" title="Tech Stack" subtitle="The tools I use to build reliable, scalable systems.">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-border bg-card">
+    {techCategories.map((category) => (
+      <div 
+        class="group border-b-2 border-border last:border-b-0 md:border-b-2 md:last:border-b-0 md:nth-2:border-b-0 lg:border-b-0 lg:border-r-2 lg:last:border-r-0"
+      >
+        <!-- Header -->
+        <div class="p-4 md:p-5 lg:p-6 border-b-2 border-border bg-secondary/5 group-hover:bg-primary/5 transition-colors">
+          <h3 class="text-xs md:text-sm font-bold uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors">
+            {category.category}
+          </h3>
+        </div>
+        
+        <!-- List -->
+        <div class="p-4 md:p-5 lg:p-6 space-y-3 md:space-y-3.5 lg:space-y-4">
+          {category.techs.map((tech) => (
+            <div class="flex items-center justify-between group/item">
+              <div class="flex items-center gap-2.5 md:gap-3">
+                <div class="w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 flex items-center justify-center bg-background border-2 border-border group-hover/item:border-primary transition-all">
+                  <img 
+                    src={tech.logo} 
+                    alt={tech.name}
+                    class="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 object-contain opacity-70 grayscale group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="text-sm md:text-base font-bold text-foreground group-hover/item:text-primary transition-colors">
+                  {tech.name}
+                </span>
+              </div>
+              <div class="h-1.5 w-1.5 rounded-full bg-border group-hover/item:bg-primary transition-colors"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</SectionContainer>

@@ -1,0 +1,78 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	url?: string;
+}
+
+const {
+	title,
+	description = 'Madusha Sandaruwan - Software Engineer specializing in resilient systems and cloud architecture.',
+	image = '/og-image.png', // Ensure this exists or use a default
+	url = Astro.url.href,
+} = Astro.props;
+
+const siteName = 'Madusha Sandaruwan';
+const twitterHandle = '@_MadushaS';
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Font Preloading for better performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="dns-prefetch" href="https://cdn.sanity.io" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content="Madusha Sandaruwan" />
+<meta name="keywords" content="Software Engineer, Full-Stack Developer, Cloud Architecture, Systems Design, Madusha Sandaruwan, Web Development, Resilient Systems" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:creator" content={twitterHandle} />
+
+<!-- Canonical URL -->
+<!-- Canonical URL -->
+<link rel="canonical" href={url} />
+
+<!-- Favicons & Theme -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Madusha Sandaruwan",
+  "url": url,
+  "image": new URL(image, Astro.url),
+  "jobTitle": "Software Engineer",
+  "description": description,
+  "sameAs": [
+    "https://github.com/madushas",
+    "https://linkedin.com/in/madushas",
+    "https://twitter.com/_MadushaS"
+  ]
+})} />

@@ -1,0 +1,31 @@
+---
+import { cn } from '../../lib/utils';
+
+interface Props {
+	variant?: 'muted' | 'outline' | 'solid' | 'primary';
+	size?: 'sm' | 'md';
+	class?: string;
+}
+
+const { variant = 'muted', size = 'sm', class: className } = Astro.props;
+
+const baseStyles =
+	'inline-flex items-center font-medium tracking-wide select-none whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:opacity-50 disabled:pointer-events-none transition-all duration-200';
+
+const variantStyles: Record<string, string> = {
+	muted:
+		'bg-muted/50 border border-border/60 text-foreground/80 hover:bg-muted hover:border-border',
+	outline: 'border-2 border-border text-foreground hover:border-primary/50 hover:bg-primary/5',
+	solid: 'bg-accent text-foreground border border-border hover:bg-accent/80',
+	primary:
+		'bg-primary/10 text-primary border border-primary/20 hover:bg-primary/15 hover:border-primary/30',
+};
+
+const sizeStyles: Record<string, string> = {
+	sm: 'text-xs px-2.5 py-1 rounded-lg',
+	md: 'text-sm px-3 py-1.5 rounded-lg',
+};
+---
+<span class={cn(baseStyles, variantStyles[variant], sizeStyles[size], className)}>
+  <slot />
+</span>

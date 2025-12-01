@@ -1,0 +1,28 @@
+---
+import { localProjects } from '../../data/localProjects';
+import SectionContainer from '../shared/SectionContainer.astro';
+import ProjectCard from './ProjectCard.astro';
+
+// Using local data to reflect new CTO/Architect persona immediately
+// Sanity integration can be restored later if needed
+const projects = localProjects;
+const error = null;
+---
+
+<SectionContainer id="projects" title="Selected Work" subtitle="Selected projects and experiments.">
+  {error ? (
+    <div class="flex justify-center py-10">
+      <span class="text-[hsl(var(--destructive))]">Failed to load projects.</span>
+    </div>
+  ) : projects.length === 0 ? (
+    <div class="flex justify-center py-10">
+        <span class="text-[hsl(var(--muted-foreground))]">Loading projects...</span>
+    </div>
+  ) : (
+    <div class="container-custom grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+      {projects.map((project: any, index: number) => (
+        <ProjectCard {...project} index={index} />
+      ))}
+    </div>
+  )}
+</SectionContainer>

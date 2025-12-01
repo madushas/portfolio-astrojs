@@ -1,0 +1,79 @@
+---
+import Navbar from '../components/shared/Navbar.svelte';
+import Layout from '../layouts/Layout.astro';
+
+const title = '404 - Page Not Found';
+const description = "The page you're looking for doesn't exist.";
+---
+
+<Layout title={title} description={description}>
+  <Navbar client:load pathname={Astro.url.pathname} />
+  
+  <main id="main-content" class="min-h-screen flex items-center justify-center bg-[hsl(var(--background))]">
+    <div class="container-custom max-w-2xl text-center py-24">
+      <!-- 404 Visual -->
+      <div class="mb-12">
+        <h1 class="text-[120px] md:text-[200px] font-black leading-none text-[hsl(var(--primary))] tracking-tighter">
+          404
+        </h1>
+        <div class="h-1 w-32 bg-[hsl(var(--primary))] mx-auto"></div>
+      </div>
+
+      <!-- Message -->
+      <div class="space-y-6 mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-[hsl(var(--foreground))] uppercase tracking-tight">
+          Page Not Found
+        </h2>
+        <p class="text-lg text-[hsl(var(--muted-foreground))] max-w-md mx-auto">
+          The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+        </p>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          href="/"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] font-bold uppercase tracking-wider border-2 border-[hsl(var(--primary))] hover:bg-[hsl(var(--primary-hover))] transition-all duration-300"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Go Home
+        </a>
+        
+        <a 
+          href="/blog"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-[hsl(var(--foreground))] font-bold uppercase tracking-wider border-2 border-[hsl(var(--border))] hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-all duration-300"
+        >
+          View Blog
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mt-16 pt-12 border-t-2 border-[hsl(var(--border))]">
+        <p class="text-sm font-bold uppercase tracking-wider text-[hsl(var(--muted-foreground))] mb-6">
+          Quick Links
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 text-sm">
+          <a href="/#services" class="text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] font-medium transition-colors">
+            Services
+          </a>
+          <a href="/#about" class="text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] font-medium transition-colors">
+            About
+          </a>
+          <a href="/#projects" class="text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] font-medium transition-colors">
+            Projects
+          </a>
+          <a href="/#contact" class="text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] font-medium transition-colors">
+            Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

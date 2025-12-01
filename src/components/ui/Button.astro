@@ -1,0 +1,58 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '../../lib/utils';
+
+const buttonVariants = cva(
+	'inline-flex items-center justify-center font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background active:scale-[0.98] cursor-pointer',
+	{
+		variants: {
+			variant: {
+				default:
+					'bg-primary text-primary-foreground hover:bg-primary-hover shadow-md hover:shadow-lg',
+				destructive:
+					'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md hover:shadow-lg',
+				outline:
+					'border-2 border-border bg-background hover:bg-accent hover:border-primary/50 hover:text-foreground',
+				secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+				ghost: 'hover:bg-accent hover:text-foreground',
+				link: 'text-primary underline-offset-4 hover:underline',
+			},
+			size: {
+				default: 'h-11 px-5 text-sm',
+				sm: 'h-9 px-4 text-xs',
+				lg: 'h-14 px-10 text-base',
+				icon: 'h-11 w-11',
+			},
+			shape: {
+				square: 'rounded-lg',
+				soft: 'rounded-xl',
+				pill: 'rounded-full',
+			},
+		},
+		defaultVariants: {
+			variant: 'default',
+			size: 'default',
+			shape: 'square',
+		},
+	}
+);
+
+interface Props extends HTMLAttributes<'button'>, VariantProps<typeof buttonVariants> {
+	href?: string;
+	target?: string;
+	rel?: string;
+	className?: string;
+}
+
+const { className, variant, size, shape, href, ...props } = Astro.props;
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+    href={href}
+    class={cn(buttonVariants({ variant, size, shape, className }))}
+    {...props}
+>
+    <slot />
+</Element>

@@ -1,0 +1,18 @@
+---
+import Contact from './Contact.svelte';
+---
+
+<section id="contact" class="py-24 bg-[hsl(var(--background))]">
+  <div class="container-custom max-w-4xl mx-auto">
+    <div class="text-center mb-16 space-y-4">
+      <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-[hsl(var(--foreground))]">
+        Let's Work Together
+      </h2>
+      <p class="text-xl text-[hsl(var(--muted-foreground))]">
+        Ready to bring your next project to life? Let's connect!
+      </p>
+    </div>
+    
+    <Contact client:visible />
+  </div>
+</section>

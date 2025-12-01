@@ -1,0 +1,163 @@
+---
+import { Image } from 'astro:assets';
+import AI102 from '../../assets/images/certifications/ai-102.svg';
+import GHAS from '../../assets/images/certifications/ghas.webp';
+
+const certifications = [
+	{
+		name: 'GitHub Advanced Security',
+		issuer: 'GitHub',
+		date: '2024',
+		image: GHAS,
+		credentialUrl: 'https://www.credly.com/badges/c0a6736d-3b56-4b17-be20-ca2c2bf10927/public_url',
+		skills: ['Security', 'GitHub', 'DevSecOps'],
+	},
+	{
+		name: 'Azure AI Engineer Associate',
+		issuer: 'Microsoft',
+		date: '2025',
+		image: AI102,
+		credentialUrl:
+			'https://learn.microsoft.com/api/credentials/share/en-us/madusha/6929E4841E790DDB?sharingId=D5F24605DD88E710',
+		skills: ['Azure', 'AI', 'Cloud'],
+	},
+];
+---
+
+<!-- Trigger -->
+<!-- Trigger -->
+<button
+  id="open-certs-modal"
+  class="group flex items-center gap-3 cursor-pointer text-left w-full h-full py-1"
+  aria-label="View Certifications"
+>
+  <span class="text-3xl md:text-4xl font-black tracking-tighter text-foreground group-hover:text-background transition-colors duration-300">
+    {certifications.length.toString().padStart(2, '0')}
+  </span>
+  <div class="flex items-center gap-1.5 px-3 py-1.5 border border-primary/30 bg-primary/5 rounded-full group-hover:bg-background group-hover:text-foreground group-hover:border-background transition-all duration-300">
+    <span class="text-[10px] font-bold uppercase tracking-widest text-primary group-hover:text-foreground">
+      View
+    </span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-foreground"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </div>
+</button>
+
+<!-- Modal (Full Screen Solid Overlay) -->
+<!-- Modal (Full Screen Solid Overlay) -->
+<div id="certs-modal" role="dialog" aria-modal="true" aria-labelledby="certs-modal-title" class="fixed inset-0 z-9999 hidden bg-background transition-opacity duration-300 overflow-y-auto h-dvh" aria-hidden="true">
+  
+  <!-- Close Button -->
+  <button id="close-certs-modal" aria-label="Close" class="fixed top-4 right-4 md:top-6 md:right-6 z-50 group w-10 h-10 md:w-12 md:h-12 border-2 border-border bg-card hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+    <svg class="w-full h-full p-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+
+  <!-- Content Container - Auto sizing, no min-height -->
+  <div class="w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-8 xl:p-10 pb-20 md:pb-10">
+    
+    <!-- Header -->
+    <div class="mb-6 md:mb-8 lg:mb-10 border-b-2 md:border-b-4 border-foreground pb-3 md:pb-4 lg:pb-5">
+      <h2 id="certs-modal-title" class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black uppercase tracking-tighter text-foreground">Certifications</h2>
+      <p class="text-xs md:text-sm lg:text-base font-mono text-muted-foreground mt-2 md:mt-3">Verified Professional Credentials & Badges</p>
+    </div>
+
+    <!-- Grid - Auto sizing -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5 lg:gap-6 xl:gap-8 pb-4 md:pb-6">
+      {certifications.map((cert) => (
+        <div class="group flex flex-col gap-3 md:gap-4 p-3 md:p-4 lg:p-5 xl:p-6 border-2 border-border bg-card hover:border-primary transition-colors duration-300">
+          
+          <!-- Image Box - Auto height based on aspect ratio -->
+          <div class="w-full bg-background border-2 border-border flex items-center justify-center p-3 md:p-5 lg:p-6 relative overflow-hidden group-hover:border-primary/20 transition-colors">
+            <div class="absolute inset-0 bg-[radial-gradient(hsl(var(--foreground))_1px,transparent_1px)] bg-size-[16px_16px] opacity-[0.03]"></div>
+            <Image 
+              src={cert.image} 
+              alt={cert.name} 
+              width={200} 
+              height={200} 
+              class="relative z-10 w-auto max-h-24 md:max-h-36 lg:max-h-40 object-contain grayscale group-hover:grayscale-0 transition-all duration-500" 
+            />
+          </div>
+
+          <!-- Info -->
+          <div class="flex flex-col gap-2 md:gap-3">
+            <div class="flex flex-col gap-1">
+              <span class="text-[10px] md:text-xs font-mono font-bold text-primary uppercase tracking-widest">
+                {cert.issuer} // {cert.date}
+              </span>
+              <h3 class="text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+                {cert.name}
+              </h3>
+            </div>
+
+            <!-- Skills -->
+            <div class="flex flex-wrap gap-1.5 md:gap-2">
+              {cert.skills.map((skill) => (
+                <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider border border-border bg-background text-muted-foreground">
+                  {skill}
+                </span>
+              ))}
+            </div>
+
+            <!-- Action -->
+            <a 
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-2 md:mt-3 inline-flex items-center justify-center gap-2 w-full py-2.5 md:py-3 border-2 border-foreground bg-foreground text-background font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+            >
+              Verify Credential
+              <svg class="w-3.5 h-3.5 md:w-4 md:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('open-certs-modal');
+  const closeBtn = document.getElementById('close-certs-modal');
+  const modal = document.getElementById('certs-modal');
+
+  if (modal && document.body) {
+    document.body.appendChild(modal);
+  }
+
+  function openModal(e: Event) {
+    e.stopPropagation();
+    if (!modal) return;
+    
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    requestAnimationFrame(() => {
+      modal.style.opacity = '1';
+    });
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    
+    modal.style.opacity = '0';
+    
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  openBtn?.addEventListener('click', openModal);
+  closeBtn?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+  
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+</script>

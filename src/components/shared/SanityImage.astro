@@ -1,0 +1,31 @@
+---
+import { urlForImage } from '../../lib/sanity/lib/image';
+import { cn } from '../../lib/utils';
+
+interface Props {
+	asset: any;
+	alt: string;
+	class?: string;
+	width?: number;
+	height?: number;
+	priority?: boolean;
+}
+
+const { asset, alt, class: className, width, height, priority } = Astro.props;
+
+const imageUrl = asset ? urlForImage(asset) : null;
+---
+{imageUrl ? (
+  <img 
+    src={imageUrl} 
+    alt={alt} 
+    class={className} 
+    width={width} 
+    height={height} 
+    loading={priority ? "eager" : "lazy"}
+    decoding="async"
+  />
+) : (
+  <div class={cn("bg-muted", className)}></div>
+)}
+
