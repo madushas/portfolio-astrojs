@@ -1,83 +1,124 @@
 <script lang="ts">
-import { onMount } from 'svelte';
+import { onDestroy, onMount } from 'svelte';
 import ThemeToggle from './ThemeToggle.svelte';
-
-const { pathname = '/' } = $props();
 
 let active = $state('home');
 let menuOpen = $state(false);
 
 const navItems = [
-  { label: 'Home', section: 'home', homepageOnly: true },
-  { label: 'Services', section: 'services' },
-  { label: 'About', section: 'about' },
-  { label: 'Projects', section: 'projects' },
-  { label: 'Blog', route: '/blog' },
-  { label: 'Contact', section: 'contact', cta: true },
+	{ label: 'Home', section: 'home', homepageOnly: true },
+	{ label: 'Services', section: 'services' },
+	{ label: 'About', section: 'about' },
+	{ label: 'Projects', section: 'projects' },
+	{ label: 'Blog', route: '/blog' },
+	{ label: 'Contact', section: 'contact', cta: true },
 ];
 
-const onHome = pathname === '/';
-
 function handleSectionNav(e: MouseEvent, id: string) {
-  if (!onHome) return;
-  e.preventDefault();
-  const el = document.getElementById(id);
-  if (el) {
-    const y = el.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-    menuOpen = false;
-  }
+	if (!isOnHome()) return;
+	e.preventDefault();
+	const el = document.getElementById(id);
+	if (el) {
+		const y = el.getBoundingClientRect().top + window.scrollY - 80;
+		window.scrollTo({ top: y, behavior: 'smooth' });
+		menuOpen = false;
+	}
+}
+
+let _observer: IntersectionObserver | undefined;
+function getPathname() {
+	// Prefer runtime window location (works for SPA nav). For SSR fallback to '/'.
+	if (typeof window !== 'undefined' && window.location?.pathname) return window.location.pathname;
+	return '/';
+}
+
+function isOnHome() {
+	return getPathname() === '/';
+}
+
+function setupObserver() {
+	const opts = {
+		rootMargin: '-20% 0px -60% 0px',
+		threshold: [0, 0.1, 0.5, 1],
+	};
+
+	_observer = new IntersectionObserver((entries) => {
+		const sorted = entries
+			.filter((e) => e.isIntersecting)
+			.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+		if (sorted.length > 0) {
+			const id = sorted[0].target.getAttribute('id');
+			if (id) active = id;
+		}
+
+		const contactSection = document.getElementById('contact');
+		if (contactSection) {
+			const rect = contactSection.getBoundingClientRect();
+			const windowHeight = window.innerHeight;
+			const atBottom =
+				rect.top < windowHeight && window.scrollY + windowHeight >= document.body.scrollHeight - 50;
+			if (atBottom) active = 'contact';
+		}
+	}, opts);
+
+	navItems.forEach((i) => {
+		if (i.section) {
+			const el = document.getElementById(i.section);
+			if (el) _observer?.observe(el);
+		}
+	});
+}
+
+function teardownObserver() {
+	_observer?.disconnect();
+	_observer = undefined;
 }
 
 onMount(() => {
-  if (onHome) {
-    const opts = {
-      rootMargin: '-20% 0px -60% 0px',
-      threshold: [0, 0.1, 0.5, 1],
-    };
+	if (isOnHome()) setupObserver();
 
-    const observer = new IntersectionObserver((entries) => {
-      const sorted = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+	function update() {
+		if (isOnHome()) {
+			if (!_observer) setupObserver();
+		} else {
+			teardownObserver();
+		}
+	}
 
-      if (sorted.length > 0) {
-        const id = sorted[0].target.getAttribute('id');
-        if (id) active = id;
-      }
+	window.addEventListener('popstate', update);
 
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        const rect = contactSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const atBottom =
-          rect.top < windowHeight &&
-          window.scrollY + windowHeight >= document.body.scrollHeight - 50;
-        if (atBottom) active = 'contact';
-      }
-    }, opts);
+	const origPush = history.pushState;
+	const origReplace = history.replaceState;
+	history.pushState = (...args: unknown[]) => {
+		origPush.apply(history, args as any);
+		update();
+	};
+	history.replaceState = (...args: unknown[]) => {
+		origReplace.apply(history, args as any);
+		update();
+	};
 
-    navItems.forEach((i) => {
-      if (i.section) {
-        const el = document.getElementById(i.section);
-        if (el) observer.observe(el);
-      }
-    });
-
-    return () => observer.disconnect();
-  }
+	return () => {
+		teardownObserver();
+		window.removeEventListener('popstate', update);
+		history.pushState = origPush;
+		history.replaceState = origReplace;
+	};
 });
 
+onDestroy(() => teardownObserver());
+
 function getHref(item: any) {
-  if (onHome && item.section) return `#${item.section}`;
-  if (item.route) return item.route;
-  if (item.section) return `/#${item.section}`;
-  return '/';
+	if (isOnHome() && item.section) return `#${item.section}`;
+	if (item.route) return item.route;
+	if (item.section) return `/#${item.section}`;
+	return '/';
 }
 
 function isItemActive(item: any) {
-  if (onHome && item.section) return active === item.section;
-  return false;
+	if (isOnHome() && item.section) return active === item.section;
+	return false;
 }
 </script>
 
@@ -99,14 +140,14 @@ function isItemActive(item: any) {
     <nav class="hidden lg:flex items-center gap-8">
       <ul class="flex items-center gap-6 lg:gap-8">
         {#each navItems as item}
-          {#if !item.homepageOnly || onHome}
+          {#if !item.homepageOnly || isOnHome()}
             {@const href = getHref(item)}
             {@const isActive = isItemActive(item)}
             <li>
               <a
                 {href}
                 onclick={(e) =>
-                  item.section && onHome
+                  item.section && isOnHome()
                     ? handleSectionNav(e, item.section)
                     : null}
                 class={`relative text-xs font-bold uppercase tracking-widest transition-colors duration-200
@@ -186,14 +227,14 @@ function isItemActive(item: any) {
     <nav class="container-custom h-full flex flex-col py-6">
       <ul class="flex flex-col gap-2">
         {#each navItems as item}
-          {#if !item.homepageOnly || onHome}
+          {#if !item.homepageOnly || isOnHome()}
             {@const href = getHref(item)}
             {@const isActive = isItemActive(item)}
             <li>
               <a
                 {href}
                 onclick={(e) => {
-                  if (item.section && onHome) handleSectionNav(e, item.section);
+                  if (item.section && isOnHome()) handleSectionNav(e, item.section);
                   else menuOpen = false;
                 }}
                 class={`block px-4 py-3 text-base font-bold uppercase tracking-wide border-l-4 transition-all

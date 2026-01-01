@@ -5,20 +5,20 @@ let isDark = $state(false);
 let mounted = $state(false);
 
 onMount(() => {
-  mounted = true;
-  // Check initial theme
-  isDark = document.documentElement.classList.contains('dark');
+	mounted = true;
+	// Check initial theme
+	isDark = document.documentElement.classList.contains('dark');
 });
 
 function toggleTheme() {
-  isDark = !isDark;
-  if (isDark) {
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
-  }
+	isDark = !isDark;
+	if (isDark) {
+		document.documentElement.classList.add('dark');
+		localStorage.setItem('theme', 'dark');
+	} else {
+		document.documentElement.classList.remove('dark');
+		localStorage.setItem('theme', 'light');
+	}
 }
 </script>
 

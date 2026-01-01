@@ -4,29 +4,29 @@ import { WEB3FORM_ACCESS_KEY } from '../../lib/env';
 let status = $state('');
 
 async function handleSubmit(e: SubmitEvent) {
-  e.preventDefault();
-  status = 'loading';
+	e.preventDefault();
+	status = 'loading';
 
-  const form = e.target as HTMLFormElement;
-  const formData = new FormData(form);
-  formData.append('access_key', WEB3FORM_ACCESS_KEY);
+	const form = e.target as HTMLFormElement;
+	const formData = new FormData(form);
+	formData.append('access_key', WEB3FORM_ACCESS_KEY);
 
-  try {
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formData,
-    });
-    const result = await response.json();
-    if (result.success) {
-      status = 'submitted';
-      form.reset();
-      setTimeout(() => (status = ''), 5000);
-    } else {
-      status = 'error';
-    }
-  } catch (err) {
-    status = 'error';
-  }
+	try {
+		const response = await fetch('https://api.web3forms.com/submit', {
+			method: 'POST',
+			body: formData,
+		});
+		const result = await response.json();
+		if (result.success) {
+			status = 'submitted';
+			form.reset();
+			setTimeout(() => (status = ''), 5000);
+		} else {
+			status = 'error';
+		}
+	} catch (err) {
+		status = 'error';
+	}
 }
 </script>
 

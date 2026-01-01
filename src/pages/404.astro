@@ -7,7 +7,7 @@ const description = "The page you're looking for doesn't exist.";
 ---
 
 <Layout title={title} description={description}>
-  <Navbar client:load pathname={Astro.url.pathname} />
+  <Navbar client:load />
   
   <main id="main-content" class="min-h-screen flex items-center justify-center bg-[hsl(var(--background))]">
     <div class="container-custom max-w-2xl text-center py-24">

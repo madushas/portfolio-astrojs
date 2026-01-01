@@ -9,31 +9,32 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://madusha.dev',
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
-  integrations: [svelte(), sitemap()],
-  image: {
-    domains: ['cdn.sanity.io'],
-  },
-  vite: {
-    ssr: {
-      external: ['cloudflare:*'],
-    },
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            if (id.includes('node_modules')) {
-              return 'vendor';
-            }
-          },
-        },
-      },
-    },
+	site: 'https://madusha.dev',
+	output: 'server',
+	adapter: node({
+		mode: 'standalone',
+	}),
+	integrations: [svelte(), sitemap()],
+	image: {
+		domains: ['cdn.sanity.io'],
+	},
+	vite: {
+		// Remove `cloudflare:*` externalization to avoid Node ESM trying to resolve the
+		// `cloudflare:` protocol during local builds. If you need to externalize
+		// Node built-ins, add them explicitly (e.g. ['node:crypto']).
+		ssr: {},
+		build: {
+			rollupOptions: {
+				output: {
+					manualChunks: (id) => {
+						if (id.includes('node_modules')) {
+							return 'vendor';
+						}
+					},
+				},
+			},
+		},
 
-    plugins: [tailwindcss()],
-  },
+		plugins: [tailwindcss()],
+	},
 });
