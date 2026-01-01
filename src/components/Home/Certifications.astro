@@ -44,10 +44,10 @@ const certifications = [
 
 <!-- Modal (Full Screen Solid Overlay) -->
 <!-- Modal (Full Screen Solid Overlay) -->
-<div id="certs-modal" role="dialog" aria-modal="true" aria-labelledby="certs-modal-title" class="fixed inset-0 z-9999 hidden bg-background transition-opacity duration-300 overflow-y-auto h-dvh" aria-hidden="true">
+<div id="certs-modal" role="dialog" aria-modal="true" aria-labelledby="certs-modal-title" class="fixed inset-0 z-modal hidden bg-background transition-opacity duration-300 overflow-y-auto h-dvh" aria-hidden="true">
   
   <!-- Close Button -->
-  <button id="close-certs-modal" aria-label="Close" class="fixed top-4 right-4 md:top-6 md:right-6 z-50 group w-10 h-10 md:w-12 md:h-12 border-2 border-border bg-card hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+  <button id="close-certs-modal" aria-label="Close certifications modal" class="fixed top-4 right-4 md:top-6 md:right-6 z-tooltip group w-10 h-10 md:w-12 md:h-12 border-2 border-border bg-card hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all active:scale-95">
     <svg class="w-full h-full p-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
   </button>
 
@@ -128,21 +128,29 @@ const certifications = [
     if (!modal) return;
     
     modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     
     requestAnimationFrame(() => {
       modal.style.opacity = '1';
     });
+    
+    // Focus trap - focus close button
+    closeBtn?.focus();
   }
 
   function closeModal() {
     if (!modal) return;
     
     modal.style.opacity = '0';
+    modal.setAttribute('aria-hidden', 'true');
     
     setTimeout(() => {
       modal.classList.add('hidden');
       document.body.style.overflow = '';
+      
+      // Return focus to trigger button
+      openBtn?.focus();
     }, 300);
   }
 

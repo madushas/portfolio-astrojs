@@ -123,7 +123,8 @@ function isItemActive(item: any) {
 </script>
 
 <header
-  class="fixed top-0 left-0 right-0 z-100 border-b-2 border-border bg-background/95 backdrop-blur-sm transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-sticky border-b-2 border-border bg-background/95 backdrop-blur-sm transition-all duration-300"
+  role="banner"
 >
   <div
     class="container-custom h-16 md:h-18 lg:h-20 flex items-center justify-between"
@@ -132,12 +133,13 @@ function isItemActive(item: any) {
     <a
       href="/"
       class="text-xl md:text-2xl font-black tracking-tighter text-foreground hover:text-primary transition-colors uppercase"
+      aria-label="Madusha - Home"
     >
       Madusha<span class="text-primary">.</span>
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden lg:flex items-center gap-8">
+    <nav class="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main navigation">
       <ul class="flex items-center gap-6 lg:gap-8">
         {#each navItems as item}
           {#if !item.homepageOnly || isOnHome()}
@@ -159,11 +161,13 @@ function isItemActive(item: any) {
                             : "text-muted-foreground hover:text-foreground"
                       }
                     `}
+                aria-current={isActive && !item.cta ? "page" : undefined}
               >
                 {item.label}
                 {#if isActive && !item.cta}
                   <span
                     class="absolute -bottom-2 left-0 w-full h-0.5 bg-primary"
+                    aria-hidden="true"
                   ></span>
                 {/if}
               </a>
@@ -182,7 +186,9 @@ function isItemActive(item: any) {
       <button
         class="flex items-center justify-center w-10 h-10 border-2 border-border bg-card hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
         onclick={() => (menuOpen = !menuOpen)}
-        aria-label="Toggle menu"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
       >
         {#if menuOpen}
           <svg
@@ -219,12 +225,15 @@ function isItemActive(item: any) {
   </div>
 </header>
 
-<!-- Mobile Menu - Clean Slide-in Design -->
+<!-- Mobile Menu - Clean Slide-in Design with Animation -->
 {#if menuOpen}
   <div
-    class="lg:hidden fixed top-16 md:top-18 bottom-0 left-0 right-0 z-40 bg-background/98 backdrop-blur-md border-t-2 border-border"
+    id="mobile-menu"
+    class="lg:hidden fixed top-16 md:top-18 bottom-0 left-0 right-0 z-dropdown bg-background/98 backdrop-blur-md border-t-2 border-border animate-slide-down"
+    role="navigation"
+    aria-label="Mobile navigation"
   >
-    <nav class="container-custom h-full flex flex-col py-6">
+    <nav class="container-custom h-full flex flex-col py-6" role="menu">
       <ul class="flex flex-col gap-2">
         {#each navItems as item}
           {#if !item.homepageOnly || isOnHome()}
@@ -246,6 +255,8 @@ function isItemActive(item: any) {
                                : "border-transparent text-muted-foreground hover:border-border hover:text-foreground hover:bg-muted/30"
                          }
                        `}
+                role="menuitem"
+                aria-current={isActive ? "page" : undefined}
               >
                 {item.label}
               </a>

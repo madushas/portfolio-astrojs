@@ -143,11 +143,11 @@ const techCategories = [
           {category.techs.map((tech) => (
             <div class="flex items-center justify-between group/item">
               <div class="flex items-center gap-2.5 md:gap-3">
-                <div class="w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 flex items-center justify-center bg-background border-2 border-border group-hover/item:border-primary transition-all">
+                <div class="w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 flex items-center justify-center bg-background border-2 border-border group-hover/item:border-primary group-hover/item:scale-110 transition-all">
                   <img 
                     src={tech.logo} 
-                    alt={tech.name}
-                    class="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 object-contain opacity-70 grayscale group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all"
+                    alt={`${tech.name} logo`}
+                    class="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 object-contain opacity-70 grayscale group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-110 transition-all"
                     loading="lazy"
                   />
                 </div>

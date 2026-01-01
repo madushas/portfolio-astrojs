@@ -27,17 +27,7 @@ export default defineConfig({
 		// `cloudflare:` protocol during local builds. If you need to externalize
 		// Node built-ins, add them explicitly (e.g. ['node:crypto']).
 		ssr: {},
-		build: {
-			rollupOptions: {
-				output: {
-					manualChunks: (id) => {
-						if (id.includes('node_modules')) {
-							return 'vendor';
-						}
-					},
-				},
-			},
-		},
+		build: {},
 
 		plugins: [tailwindcss()],
 	},

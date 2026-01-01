@@ -42,15 +42,17 @@ const services = [
 <SectionContainer id="services" title="What I Work On" subtitle="Bridging the gap between backend systems and user experiences.">
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
     {services.map((service) => (
-      <div class={`group relative overflow-hidden rounded-none border-2 border-border bg-card p-6 md:p-7 lg:p-8 transition-all duration-300 hover:border-primary hover:shadow-none ${service.class}`}>
+      <div class={`group relative overflow-hidden rounded-none border-2 border-border bg-card p-6 md:p-7 lg:p-8 transition-all duration-300 hover:border-primary hover:-translate-y-1 hover:shadow-lg ${service.class}`}>
         
         <!-- Hover Gradient Background -->
-        <div class={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}></div>
+        <div class={`absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100`}>
+          <div class={`w-full h-full bg-linear-to-br ${service.gradient}`}></div>
+        </div>
         
         <div class="relative z-10 flex flex-col h-full justify-between gap-5 md:gap-6">
           <!-- Header -->
           <div class="flex justify-between items-start">
-            <div class="h-10 w-10 md:h-12 md:w-12 bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300 border border-primary/20">
+            <div class="h-10 w-10 md:h-12 md:w-12 bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-primary/20">
               {service.icon === 'architecture' && (
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
               )}

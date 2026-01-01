@@ -19,7 +19,10 @@ const { title, description = 'Madusha Sandaruwan - Portfolio' } = Astro.props;
 <html lang="en">
 	<head>
 		<SEO title={title} description={description} />
-        <script is:inline>
+		<!-- Preconnect to external domains for performance -->
+		<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+		<link rel="dns-prefetch" href="https://cdn.sanity.io" />
+		<script is:inline>
             // Dark mode initialization
             const theme = (() => {
                 if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -52,7 +55,7 @@ const { title, description = 'Madusha Sandaruwan - Portfolio' } = Astro.props;
 	</head>
 	<body class="font-sans antialiased text-foreground bg-background transition-colors duration-300">
 		<!-- Skip to main content link for accessibility -->
-		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md">
+		<a href="#main-content" class="skip-link sr-only focus:not-sr-only">
 			Skip to main content
 		</a>
 		<slot />

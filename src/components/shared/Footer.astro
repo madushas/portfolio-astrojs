@@ -1,49 +1,160 @@
 ---
 const year = new Date().getFullYear();
+
+const socialLinks = [
+  { label: 'LinkedIn', url: 'https://linkedin.com/in/madushasandaruwan', icon: 'linkedin' },
+  { label: 'GitHub', url: 'https://github.com/madushaS/', icon: 'github' },
+  { label: 'X', url: 'https://x.com/_MadushaS', icon: 'x' },
+];
+
+const quickLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'Services', href: '#services' },
+  { label: 'About', href: '#about' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '#contact' },
+];
 ---
 
-<footer class="mt-(--sp-9) border-t-2 border-border bg-background">
-  <div class="container-custom py-12 md:py-14 lg:py-16 xl:py-20">
-    <div class="grid gap-10 md:gap-12 md:grid-cols-3">
-      <div class="md:col-span-1">
-        <div class="mb-6 font-black text-xl text-foreground tracking-tighter uppercase">Madusha.</div>
-        <p class="text-sm text-muted-foreground leading-relaxed text-pretty max-w-xs font-medium">
-          Software engineer & CTO. Building systems that scale.
-        </p>
-      </div>
+<footer class="mt-(--sp-9) border-t-2 border-border bg-background relative" role="contentinfo">
+  
+  <!-- Main Footer Content -->
+  <div class="container-custom">
+    
+    <!-- Footer Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 border-b-2 border-border">
       
-      <div>
-        <h4 class="mb-6 text-xs font-bold uppercase tracking-wider text-foreground">Navigation</h4>
-        <nav class="flex flex-col gap-3.5 text-sm text-muted-foreground font-medium">
-          <a href="#home" class="hover:text-primary transition-colors duration-200 w-fit">Home</a>
-          <a href="#services" class="hover:text-primary transition-colors duration-200 w-fit">What I Work On</a>
-          <a href="#projects" class="hover:text-primary transition-colors duration-200 w-fit">Projects</a>
-          <a href="#toparticles" class="hover:text-primary transition-colors duration-200 w-fit">Blog</a>
-          <a href="#contact" class="hover:text-primary transition-colors duration-200 w-fit">Contact</a>
-        </nav>
-      </div>
-      
-      <div>
-        <h4 class="mb-6 text-xs font-bold uppercase tracking-wider text-foreground">Contact</h4>
-        <div class="flex flex-col gap-3.5 text-sm text-muted-foreground font-medium">
-          <a href="mailto:work@madusha.dev" class="hover:text-primary transition-colors duration-200 w-fit">work@madusha.dev</a>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" class="hover:text-primary transition-colors duration-200 w-fit">Resume</a>
+      <!-- Brand Section - Large -->
+      <div class="lg:col-span-5 border-b-2 lg:border-b-0 lg:border-r-2 border-border p-8 md:p-10 lg:p-12 bg-secondary/5">
+        <div class="space-y-6 lg:space-y-8">
+          
+          <!-- Logo -->
+          <div>
+            <a href="/" class="inline-block group">
+              <h2 class="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-foreground uppercase group-hover:text-primary transition-colors">
+                Madusha<span class="text-primary">.</span>
+              </h2>
+            </a>
+            <p class="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
+              Software Engineer & CTO building scalable systems with modern architecture.
+            </p>
+          </div>
+
+          <!-- Social Links - Prominent -->
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-4 text-muted-foreground">Connect</h3>
+            <div class="flex flex-wrap gap-3">
+              {socialLinks.map((social) => (
+                <a 
+                  href={social.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="group/social w-12 h-12 border-2 border-border bg-background flex items-center justify-center hover:bg-foreground hover:text-background hover:border-foreground hover:-translate-y-1 transition-all active:scale-95"
+                  aria-label={`Visit my ${social.label} profile`}
+                >
+                  {social.icon === 'linkedin' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9H12.92v1.636h.049c.496-.94 1.712-1.929 3.521-1.929 3.765 0 4.46 2.479 4.46 5.702v6.043zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  )}
+                  {social.icon === 'github' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  )}
+                  {social.icon === 'x' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="space-y-3 text-sm">
+            <a href="mailto:work@madusha.dev" class="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-medium group">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span class="group-hover:underline">work@madusha.dev</span>
+            </a>
+            <div class="flex items-center gap-2 text-muted-foreground font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Colombo, Sri Lanka</span>
+            </div>
+          </div>
+
         </div>
+      </div>
+
+      <!-- Navigation & Resources -->
+      <div class="lg:col-span-7 grid grid-cols-2 md:grid-cols-3">
+        
+        <!-- Quick Links -->
+        <div class="border-b-2 md:border-b-0 md:border-r-2 border-border p-6 md:p-8">
+          <h3 class="text-xs font-bold uppercase tracking-widest mb-6 text-foreground">Navigation</h3>
+          <nav class="flex flex-col gap-3" aria-label="Footer navigation">
+            {quickLinks.map((link) => (
+              <a 
+                href={link.href} 
+                class="text-sm text-muted-foreground hover:text-primary transition-colors font-medium hover:translate-x-1 inline-block group"
+              >
+                <span class="group-hover:underline">{link.label}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        <!-- Resources -->
+        <div class="border-b-2 md:border-b-0 md:border-r-2 border-border p-6 md:p-8">
+          <h3 class="text-xs font-bold uppercase tracking-widest mb-6 text-foreground">Resources</h3>
+          <nav class="flex flex-col gap-3">
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" class="text-sm text-muted-foreground hover:text-primary transition-colors font-medium hover:translate-x-1 inline-block group">
+              <span class="group-hover:underline">Resume</span>
+            </a>
+            <a href="/blog" class="text-sm text-muted-foreground hover:text-primary transition-colors font-medium hover:translate-x-1 inline-block group">
+              <span class="group-hover:underline">Blog</span>
+            </a>
+            <a href="/#projects" class="text-sm text-muted-foreground hover:text-primary transition-colors font-medium hover:translate-x-1 inline-block group">
+              <span class="group-hover:underline">Portfolio</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Legal & Tech -->
+        <div class="p-6 md:p-8 col-span-2 md:col-span-1 border-r-2 md:border-r-0 border-border md:border-0">
+          <h3 class="text-xs font-bold uppercase tracking-widest mb-6 text-foreground">Built With</h3>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="px-2 py-1 text-xs font-bold uppercase tracking-wider border border-border bg-secondary/10 text-muted-foreground">Astro</span>
+            <span class="px-2 py-1 text-xs font-bold uppercase tracking-wider border border-border bg-secondary/10 text-muted-foreground">Svelte</span>
+            <span class="px-2 py-1 text-xs font-bold uppercase tracking-wider border border-border bg-secondary/10 text-muted-foreground">Tailwind v4</span>
+          </div>
+          <p class="text-xs text-muted-foreground leading-relaxed">
+            Designed & built with attention to performance, accessibility, and modern web standards.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3 text-xs text-muted-foreground font-mono uppercase tracking-wider">
+        <span>&copy; {year} Madusha Sandaruwan</span>
+        <span class="hidden md:inline">•</span>
+        <span class="hidden md:inline">All Rights Reserved</span>
+      </div>
+      <div class="flex items-center gap-2 text-xs text-muted-foreground">
+        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+        <span class="font-medium">Available for projects</span>
       </div>
     </div>
 
-    <div class="mt-12 md:mt-14 lg:mt-16 xl:mt-20 pt-6 md:pt-7 lg:pt-8 border-t-2 border-border flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
-      <p class="text-xs text-muted-foreground font-bold uppercase tracking-wider">&copy; {year} Madusha Sandaruwan.</p>
-      <div class="text-xs text-muted-foreground font-mono uppercase tracking-wider">Built with Astro & Tailwind v4</div>
-    </div>
   </div>
   
+  <!-- Back to Top Button -->
   <button
     id="back-to-top"
-    aria-label="Back to top"
-    class="fixed bottom-6 right-6 md:bottom-7 md:right-7 lg:bottom-8 lg:right-8 h-11 w-11 md:h-12 md:w-12 flex items-center justify-center border-2 border-border bg-card text-foreground transition-all duration-300 opacity-0 pointer-events-none hover:border-primary hover:bg-primary hover:text-primary-foreground z-50"
+    aria-label="Scroll back to top"
+    class="fixed bottom-6 right-6 md:bottom-7 md:right-7 lg:bottom-8 lg:right-8 h-12 w-12 md:h-14 md:w-14 flex items-center justify-center border-2 border-border bg-card text-foreground transition-all duration-300 opacity-0 pointer-events-none hover:border-primary hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-lg active:scale-95 z-sticky"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
   </button>
 </footer>
 
@@ -51,7 +162,7 @@ const year = new Date().getFullYear();
   const btn = document.getElementById('back-to-top');
   if (btn) {
       const toggleVisibility = () => {
-        if (window.scrollY > 600) {
+        if (window.scrollY > 300) {
             btn.classList.remove('opacity-0', 'pointer-events-none');
             btn.classList.add('opacity-100', 'pointer-events-auto');
         } else {
@@ -60,9 +171,12 @@ const year = new Date().getFullYear();
         }
       };
       
-      window.addEventListener('scroll', toggleVisibility);
+      window.addEventListener('scroll', toggleVisibility, { passive: true });
       btn.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+      
+      // Initial check
+      toggleVisibility();
   }
 </script>

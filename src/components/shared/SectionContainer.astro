@@ -43,7 +43,10 @@ const hasAction = Astro.slots.has('action');
 <script>
   import { inView, animate } from "motion";
   
-  // Observe all sections
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  // Observe all sections with optimized settings
   inView(".section-animate", (info: any) => {
       const target = info.target as HTMLElement;
       if (!target) return;
@@ -51,11 +54,22 @@ const hasAction = Astro.slots.has('action');
       const header = target.querySelector(".motion-header") as HTMLElement;
       const content = target.querySelector(".motion-content") as HTMLElement;
       
-      if (header) {
+      if (prefersReducedMotion) {
+        // Simple fade for reduced motion
+        if (header) {
+          animate(header as any, { opacity: [0, 1] }, { duration: 0.3 } as any);
+        }
+        if (content) {
+          animate(content as any, { opacity: [0, 1] }, { duration: 0.3, delay: 0.05 } as any);
+        }
+      } else {
+        // Full animation for normal motion
+        if (header) {
           animate(header as any, { opacity: [0, 1], y: [30, 0] }, { duration: 0.7, easing: [0.16, 1, 0.3, 1] } as any);
-      }
-      if (content) {
+        }
+        if (content) {
           animate(content as any, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, delay: 0.15, easing: [0.16, 1, 0.3, 1] } as any);
+        }
       }
-  });
+  }, { margin: "0px 0px -100px 0px" });
 </script>
