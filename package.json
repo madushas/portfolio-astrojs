@@ -21,7 +21,7 @@
 		"@fontsource-variable/chivo": "^5.2.8",
 		"@fontsource/chivo": "^5.2.8",
 		"@fontsource/ibm-plex-sans": "^5.2.8",
-		"@sanity/client": "^7.13.2",
+		"@sanity/client": "^7.14.0",
 		"@sanity/image-url": "^2.0.2",
 		"@tailwindcss/vite": "^4.1.18",
 		"astro": "^5.16.6",
