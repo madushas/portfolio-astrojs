@@ -128,15 +128,34 @@
 
 	/* Shadows */
 	--shadow-xs: 0 1px 2px 0 hsl(var(--foreground) / 0.05);
-	--shadow-sm: 0 1px 3px 0 hsl(var(--foreground) / 0.1), 0 1px 2px -1px hsl(var(--foreground) / 0.1);
-	--shadow-md: 0 4px 6px -1px hsl(var(--foreground) / 0.1), 0 2px 4px -2px hsl(var(--foreground) / 0.1);
-	--shadow-lg: 0 10px 15px -3px hsl(var(--foreground) / 0.1), 0 4px 6px -4px hsl(var(--foreground) / 0.1);
-	--shadow-xl: 0 20px 25px -5px hsl(var(--foreground) / 0.1), 0 8px 10px -6px hsl(var(--foreground) / 0.1);
+	--shadow-sm:
+		0 1px 3px 0 hsl(var(--foreground) / 0.1), 0 1px 2px -1px hsl(var(--foreground) / 0.1);
+	--shadow-md:
+		0 4px 6px -1px hsl(var(--foreground) / 0.1), 0 2px 4px -2px hsl(var(--foreground) / 0.1);
+	--shadow-lg:
+		0 10px 15px -3px hsl(var(--foreground) / 0.1), 0 4px 6px -4px hsl(var(--foreground) / 0.1);
+	--shadow-xl:
+		0 20px 25px -5px hsl(var(--foreground) / 0.1), 0 8px 10px -6px hsl(var(--foreground) / 0.1);
 
 	/* Gradients */
-	--gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)) 40%, hsl(var(--accent)));
-	--gradient-primary-soft: linear-gradient(to bottom right, hsl(var(--primary)) / 0.08, transparent 80%);
-	--gradient-accent-soft: linear-gradient(to bottom right, hsl(var(--accent)) / 0.07, transparent 100%);
+	--gradient-primary: linear-gradient(
+		135deg,
+		hsl(var(--primary)),
+		hsl(var(--primary)) 40%,
+		hsl(var(--accent))
+	);
+	--gradient-primary-soft: linear-gradient(
+		to bottom right,
+		hsl(var(--primary)) /
+		0.08,
+		transparent 80%
+	);
+	--gradient-accent-soft: linear-gradient(
+		to bottom right,
+		hsl(var(--accent)) /
+		0.07,
+		transparent 100%
+	);
 }
 
 @layer base {
@@ -261,19 +280,19 @@
 	.z-dropdown {
 		z-index: 30;
 	}
-	
+
 	.z-sticky {
 		z-index: 40;
 	}
-	
+
 	.z-modal-backdrop {
 		z-index: 50;
 	}
-	
+
 	.z-modal {
 		z-index: 50;
 	}
-	
+
 	.z-tooltip {
 		z-index: 60;
 	}
@@ -413,7 +432,7 @@
 			animation-iteration-count: 1 !important;
 			transition-duration: 0.01ms !important;
 		}
-		
+
 		.animate-slide-down {
 			animation: none;
 		}

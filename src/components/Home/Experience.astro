@@ -8,10 +8,10 @@ import SectionContainer from '../shared/SectionContainer.astro';
     {experiences.map((exp, index) => (
       <li class="group relative mb-16 last:mb-0">
          <!-- Node -->
-         <span class="absolute -left-[58px] top-2 grid h-10 w-10 place-content-center rounded-xl border-2 border-primary/30 bg-primary/10 text-xs font-bold text-primary shadow-md transition-all duration-300 group-hover:border-primary group-hover:bg-primary/20 group-hover:scale-110">
+         <span class="absolute -left-14.5 top-2 grid h-10 w-10 place-content-center rounded-xl border-2 border-primary/30 bg-primary/10 text-xs font-bold text-primary shadow-md transition-all duration-300 group-hover:border-primary group-hover:bg-primary/20 group-hover:scale-110">
            {index + 1}
          </span>
-         
+
          <!-- Card -->
          <details class="group/details relative overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm transition-all duration-500 hover:border-primary/40 hover:shadow-lg open:border-primary/50 open:shadow-xl">
             <summary class="flex w-full cursor-pointer items-start gap-5 px-6 py-6 text-left list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 md:gap-6 md:px-8 [&::-webkit-details-marker]:hidden">
@@ -31,7 +31,7 @@ import SectionContainer from '../shared/SectionContainer.astro';
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-2 h-6 w-6 shrink-0 text-muted-foreground transition-all duration-300 group-open/details:rotate-180 group-open/details:text-primary"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
-            
+
             <div class="overflow-hidden px-6 pb-8 pt-2 md:px-8 animate-in slide-in-from-top-2 duration-300">
                 <ul class="mb-6 space-y-3 text-sm leading-relaxed text-foreground/80 md:text-base">
                     {exp.description.map((item) => (

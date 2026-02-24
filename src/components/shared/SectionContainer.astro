@@ -42,18 +42,18 @@ const hasAction = Astro.slots.has('action');
 
 <script>
   import { inView, animate } from "motion";
-  
+
   // Check for reduced motion preference
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
+
   // Observe all sections with optimized settings
   inView(".section-animate", (info: any) => {
       const target = info.target as HTMLElement;
       if (!target) return;
-      
+
       const header = target.querySelector(".motion-header") as HTMLElement;
       const content = target.querySelector(".motion-content") as HTMLElement;
-      
+
       if (prefersReducedMotion) {
         // Simple fade for reduced motion
         if (header) {

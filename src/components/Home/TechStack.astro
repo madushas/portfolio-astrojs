@@ -128,7 +128,7 @@ const techCategories = [
 <SectionContainer id="techstack" title="Tech Stack" subtitle="The tools I use to build reliable, scalable systems.">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-border bg-card">
     {techCategories.map((category) => (
-      <div 
+      <div
         class="group border-b-2 border-border last:border-b-0 md:border-b-2 md:last:border-b-0 md:nth-2:border-b-0 lg:border-b-0 lg:border-r-2 lg:last:border-r-0"
       >
         <!-- Header -->
@@ -137,15 +137,15 @@ const techCategories = [
             {category.category}
           </h3>
         </div>
-        
+
         <!-- List -->
         <div class="p-4 md:p-5 lg:p-6 space-y-3 md:space-y-3.5 lg:space-y-4">
           {category.techs.map((tech) => (
             <div class="flex items-center justify-between group/item">
               <div class="flex items-center gap-2.5 md:gap-3">
                 <div class="w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 flex items-center justify-center bg-background border-2 border-border group-hover/item:border-primary group-hover/item:scale-110 transition-all">
-                  <img 
-                    src={tech.logo} 
+                  <img
+                    src={tech.logo}
                     alt={`${tech.name} logo`}
                     class="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 object-contain opacity-70 grayscale group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-110 transition-all"
                     loading="lazy"

@@ -45,7 +45,7 @@ if (demoLink && githubRepo) {
   <div class="relative w-full aspect-video border-b-2 border-border bg-secondary/5 overflow-hidden">
     <!-- Tech Grid Background -->
     <div class="absolute inset-0 bg-[radial-gradient(#000_1px,transparent_1px)] bg-size-[16px_16px] opacity-[0.03] dark:opacity-[0.1]"></div>
-    
+
     <div class="relative h-full w-full p-8 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
       {typeof image === "object" && image?.asset ? (
         <SanityImage asset={image.asset} alt={title} class="max-w-full max-h-full object-contain drop-shadow-none grayscale group-hover:grayscale-0 transition-all duration-500" />
@@ -82,19 +82,19 @@ if (demoLink && githubRepo) {
         ))}
       </div>
     )}
-    
+
     <p class="text-muted-foreground leading-relaxed mb-6 md:mb-8 flex-1">
       {description}
     </p>
-    
+
     <!-- Footer / Tech & Links -->
     <div class="mt-auto pt-5 md:pt-6 border-t-2 border-border flex items-center justify-between gap-3 md:gap-4">
         <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
-            <span class="truncate max-w-[120px] sm:max-w-[140px] md:max-w-[180px]" title={technologies.join(", ")}>
+            <span class="truncate max-w-30 sm:max-w-35 md:max-w-45" title={technologies.join(", ")}>
                 {technologies.slice(0, 3).join(" / ")}{technologies.length > 3 ? "..." : ""}
             </span>
         </div>
-        
+
         <div class="flex items-center gap-2.5 md:gap-3">
         {secondaryHref && (
                 <a href={secondaryHref} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-8 h-8 border border-border text-muted-foreground hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-300 active:scale-95" aria-label="View source code on GitHub">

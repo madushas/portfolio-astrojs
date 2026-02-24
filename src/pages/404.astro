@@ -8,7 +8,7 @@ const description = "The page you're looking for doesn't exist.";
 
 <Layout title={title} description={description}>
   <Navbar client:load />
-  
+
   <main id="main-content" class="min-h-screen flex items-center justify-center bg-[hsl(var(--background))]">
     <div class="container-custom max-w-2xl text-center py-24">
       <!-- 404 Visual -->
@@ -31,7 +31,7 @@ const description = "The page you're looking for doesn't exist.";
 
       <!-- Actions -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a 
+        <a
           href="/"
           class="inline-flex items-center gap-2 px-8 py-4 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] font-bold uppercase tracking-wider border-2 border-[hsl(var(--primary))] hover:bg-[hsl(var(--primary-hover))] transition-all duration-300"
         >
@@ -41,8 +41,8 @@ const description = "The page you're looking for doesn't exist.";
           </svg>
           Go Home
         </a>
-        
-        <a 
+
+        <a
           href="/blog"
           class="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-[hsl(var(--foreground))] font-bold uppercase tracking-wider border-2 border-[hsl(var(--border))] hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-all duration-300"
         >

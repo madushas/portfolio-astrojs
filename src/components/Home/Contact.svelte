@@ -47,27 +47,27 @@ async function handleSubmit(e: SubmitEvent) {
             <label for="name" class="block text-xs font-bold uppercase tracking-wider text-[hsl(var(--foreground))]">
               Full Name <span class="text-[hsl(var(--destructive))]">*</span>
             </label>
-            <input 
-              id="name" 
-              name="name" 
-              required 
-              placeholder="John Doe" 
-              autocomplete="name" 
-              class="flex h-12 w-full border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-3 text-sm font-medium placeholder:text-[hsl(var(--muted-foreground))]/60 placeholder:font-normal focus-visible:outline-none focus-visible:border-[hsl(var(--primary))] focus-visible:ring-3 focus-visible:ring-[hsl(var(--primary))]/20 transition-all hover:border-[hsl(var(--border))]/60 invalid:border-red-500/50" 
+            <input
+              id="name"
+              name="name"
+              required
+              placeholder="John Doe"
+              autocomplete="name"
+              class="flex h-12 w-full border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-3 text-sm font-medium placeholder:text-[hsl(var(--muted-foreground))]/60 placeholder:font-normal focus-visible:outline-none focus-visible:border-[hsl(var(--primary))] focus-visible:ring-3 focus-visible:ring-[hsl(var(--primary))]/20 transition-all hover:border-[hsl(var(--border))]/60 invalid:border-red-500/50"
             />
         </div>
         <div class="space-y-2">
             <label for="email" class="block text-xs font-bold uppercase tracking-wider text-[hsl(var(--foreground))]">
               Email Address <span class="text-[hsl(var(--destructive))]">*</span>
             </label>
-            <input 
-              id="email" 
-              name="email" 
-              type="email" 
-              required 
-              placeholder="john@example.com" 
-              autocomplete="email" 
-              class="flex h-12 w-full border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-3 text-sm font-medium placeholder:text-[hsl(var(--muted-foreground))]/60 placeholder:font-normal focus-visible:outline-none focus-visible:border-[hsl(var(--primary))] focus-visible:ring-3 focus-visible:ring-[hsl(var(--primary))]/20 transition-all hover:border-[hsl(var(--border))]/60 invalid:border-red-500/50" 
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="john@example.com"
+              autocomplete="email"
+              class="flex h-12 w-full border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-3 text-sm font-medium placeholder:text-[hsl(var(--muted-foreground))]/60 placeholder:font-normal focus-visible:outline-none focus-visible:border-[hsl(var(--primary))] focus-visible:ring-3 focus-visible:ring-[hsl(var(--primary))]/20 transition-all hover:border-[hsl(var(--border))]/60 invalid:border-red-500/50"
             />
         </div>
     </div>
@@ -76,23 +76,23 @@ async function handleSubmit(e: SubmitEvent) {
         <label for="subject" class="block text-xs font-bold uppercase tracking-wider text-[hsl(var(--foreground))]">
           Subject <span class="text-[hsl(var(--muted-foreground))]/60">(Optional)</span>
         </label>
-        <input 
-          id="subject" 
-          name="subject" 
-          placeholder="Brief description of your project" 
-          class="flex h-12 w-full border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-3 text-sm font-medium placeholder:text-[hsl(var(--muted-foreground))]/60 placeholder:font-normal focus-visible:outline-none focus-visible:border-[hsl(var(--primary))] focus-visible:ring-3 focus-visible:ring-[hsl(var(--primary))]/20 transition-all hover:border-[hsl(var(--border))]/60" 
+        <input
+          id="subject"
+          name="subject"
+          placeholder="Brief description of your project"
+          class="flex h-12 w-full border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-3 text-sm font-medium placeholder:text-[hsl(var(--muted-foreground))]/60 placeholder:font-normal focus-visible:outline-none focus-visible:border-[hsl(var(--primary))] focus-visible:ring-3 focus-visible:ring-[hsl(var(--primary))]/20 transition-all hover:border-[hsl(var(--border))]/60"
         />
     </div>
-    
+
     <div class="space-y-2">
         <label for="message" class="block text-xs font-bold uppercase tracking-wider text-[hsl(var(--foreground))]">
           Message <span class="text-[hsl(var(--destructive))]">*</span>
         </label>
-        <textarea 
-          id="message" 
-          name="message" 
-          required 
-          placeholder="Tell me about your project, timeline, and what you're looking to build..." 
+        <textarea
+          id="message"
+          name="message"
+          required
+          placeholder="Tell me about your project, timeline, and what you're looking to build..."
           rows="6"
           class="flex w-full border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-3 text-sm font-medium placeholder:text-[hsl(var(--muted-foreground))]/60 placeholder:font-normal focus-visible:outline-none focus-visible:border-[hsl(var(--primary))] focus-visible:ring-3 focus-visible:ring-[hsl(var(--primary))]/20 resize-none transition-all hover:border-[hsl(var(--border))]/60 invalid:border-red-500/50"
         ></textarea>
@@ -100,11 +100,11 @@ async function handleSubmit(e: SubmitEvent) {
           Minimum 20 characters
         </div>
     </div>
-    
+
     <div class="flex flex-col sm:flex-row gap-4 pt-2">
-      <button 
-        type="submit" 
-        disabled={status === 'loading'} 
+      <button
+        type="submit"
+        disabled={status === 'loading'}
         class="flex-1 inline-flex items-center justify-center gap-3 whitespace-nowrap text-sm font-bold uppercase tracking-widest h-14 bg-[hsl(var(--foreground))] text-[hsl(var(--background))] border-2 border-[hsl(var(--foreground))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] hover:border-[hsl(var(--primary))] transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] hover:-translate-y-1"
       >
         {#if status === 'loading'}
@@ -119,7 +119,7 @@ async function handleSubmit(e: SubmitEvent) {
         {/if}
       </button>
     </div>
-    
+
     {#if status === 'submitted'}
       <div class="p-5 bg-[hsl(var(--primary))]/10 border-2 border-[hsl(var(--primary))]/30 flex items-start gap-4 animate-fade-in" role="alert">
         <div class="w-10 h-10 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] flex items-center justify-center shrink-0">

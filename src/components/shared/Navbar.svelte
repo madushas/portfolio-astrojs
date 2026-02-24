@@ -124,7 +124,6 @@ function isItemActive(item: any) {
 
 <header
   class="fixed top-0 left-0 right-0 z-sticky border-b-2 border-border bg-background/95 backdrop-blur-sm transition-all duration-300"
-  role="banner"
 >
   <div
     class="container-custom h-16 md:h-18 lg:h-20 flex items-center justify-between"
@@ -139,7 +138,7 @@ function isItemActive(item: any) {
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main navigation">
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
       <ul class="flex items-center gap-6 lg:gap-8">
         {#each navItems as item}
           {#if !item.homepageOnly || isOnHome()}
@@ -233,7 +232,7 @@ function isItemActive(item: any) {
     role="navigation"
     aria-label="Mobile navigation"
   >
-    <nav class="container-custom h-full flex flex-col py-6" role="menu">
+    <nav class="container-custom h-full flex flex-col py-6">
       <ul class="flex flex-col gap-2">
         {#each navItems as item}
           {#if !item.homepageOnly || isOnHome()}

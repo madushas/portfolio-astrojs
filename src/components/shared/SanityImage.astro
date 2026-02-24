@@ -16,16 +16,15 @@ const { asset, alt, class: className, width, height, priority } = Astro.props;
 const imageUrl = asset ? urlForImage(asset) : null;
 ---
 {imageUrl ? (
-  <img 
-    src={imageUrl} 
-    alt={alt} 
-    class={className} 
-    width={width} 
-    height={height} 
+  <img
+    src={imageUrl}
+    alt={alt}
+    class={className}
+    width={width}
+    height={height}
     loading={priority ? "eager" : "lazy"}
     decoding="async"
   />
 ) : (
   <div class={cn("bg-muted", className)}></div>
 )}
-

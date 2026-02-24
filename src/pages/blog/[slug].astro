@@ -51,7 +51,7 @@ const { post } = Astro.props as Props;
 
 <Layout title={post?.title ? `${post.title} - Madusha Sandaruwan` : 'Blog Post'} description={post?.excerpt || 'Blog post'}>
   <Navbar client:load />
-  
+
   {post ? (
     <main class="pt-32 pb-24 min-h-screen">
       <article class="container-custom max-w-5xl mx-auto">
@@ -68,14 +68,14 @@ const { post } = Astro.props as Props;
             <span class="w-px h-3 bg-border"></span>
             <span>5 min read</span>
           </div>
-          
+
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-[0.9] tracking-tighter uppercase text-balance">
             {post.title}
           </h1>
 
           {post.mainImage && (
             <div class="w-full aspect-21/9 bg-secondary/20 border-2 border-border overflow-hidden mb-12">
-              <img 
+              <img
                 src={urlFor(post.mainImage).width(1200).height(600).auto('format').url()}
                 srcset={`
                   ${urlFor(post.mainImage).width(640).height(320).auto('format').url()} 640w,
@@ -90,7 +90,7 @@ const { post } = Astro.props as Props;
               />
             </div>
           )}
-          
+
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-lg">
@@ -107,7 +107,7 @@ const { post } = Astro.props as Props;
         <!-- Blog Content -->
         <div class="max-w-4xl mx-auto mb-24">
           <div class="blog-content text-foreground/90">
-            <PortableText 
+            <PortableText
               value={post.body}
               components={{
                 type: {
@@ -119,7 +119,7 @@ const { post } = Astro.props as Props;
         </div>
 
         <div class="pt-12 border-t-2 border-border max-w-3xl mx-auto">
-          <a 
+          <a
             href="/blog"
             class="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors group"
           >
@@ -140,5 +140,3 @@ const { post } = Astro.props as Props;
     </main>
   )}
 </Layout>
-
-

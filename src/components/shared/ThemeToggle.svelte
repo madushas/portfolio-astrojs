@@ -37,4 +37,3 @@ function toggleTheme() {
   {/if}
 </button>
 {/if}
-
