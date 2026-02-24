@@ -36,7 +36,7 @@ const stats = [
           class="aspect-square w-full border-2 border-border bg-background relative overflow-hidden group/avatar cursor-pointer"
         >
           <div
-            class="absolute inset-0 flex items-center justify-center text-muted-foreground font-mono text-sm uppercase tracking-widest group-hover/avatar:bg-primary group-hover/avatar:text-primary-foreground transition-colors duration-300"
+            class="hidden lg:flex absolute inset-0 items-center justify-center text-muted-foreground font-mono text-sm uppercase tracking-widest lg:group-hover/avatar:bg-primary lg:group-hover/avatar:text-primary-foreground transition-colors duration-300"
           >
             [Profile_IMG]
           </div>
@@ -46,7 +46,7 @@ const stats = [
             alt="Madusha Sandaruwan profile photo"
             width={300}
             height={300}
-            class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-500 grayscale group-hover/avatar:grayscale-0"
+            class="absolute inset-0 w-full h-full object-cover opacity-100 lg:opacity-0 lg:group-hover/avatar:opacity-100 transition-opacity duration-500 grayscale-0 lg:grayscale lg:group-hover/avatar:grayscale-0"
             loading="lazy"
           />
         </div>
