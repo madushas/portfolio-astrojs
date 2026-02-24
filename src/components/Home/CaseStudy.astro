@@ -2,121 +2,438 @@
 import SectionContainer from '../shared/SectionContainer.astro';
 ---
 
-<SectionContainer id="casestudy" title="Featured Case Study" subtitle="Solving complex problems with scalable architecture.">
+<SectionContainer
+  id="casestudy"
+  title="Featured Case Study"
+  subtitle="Solving complex problems with research-driven methodology."
+>
   <div class="border-2 border-border bg-card overflow-hidden">
     <div class="grid grid-cols-1 lg:grid-cols-2">
-      
       <!-- Content Side -->
-      <div class="p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center border-b-2 lg:border-b-0 lg:border-r-2 border-border">
-        
+      <div
+        class="p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center border-b-2 lg:border-b-0 lg:border-r-2 border-border"
+      >
         <!-- Header -->
         <div class="mb-6 md:mb-8">
           <div class="flex items-center gap-3 mb-3">
-            <span class="px-3 py-1 text-xs font-bold uppercase tracking-widest bg-primary text-primary-foreground">
-              Migration
+            <span
+              class="px-3 py-1 text-xs font-bold uppercase tracking-widest bg-primary text-primary-foreground"
+            >
+              Research
             </span>
-            <span class="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-              2024 // FinTech
+            <span
+              class="text-xs font-mono text-muted-foreground uppercase tracking-wider"
+            >
+              2025 // Healthcare
             </span>
           </div>
-          <h3 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter text-foreground leading-none mb-2">
-            Enterprise Event-Driven Architecture
+          <h3
+            class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter text-foreground leading-none mb-2 text-pretty"
+          >
+            Multi-modal Alzheimer’s Classification with Cross-Attention Fusion
           </h3>
-          <p class="text-lg font-bold text-primary">
-            Role: CTO / Lead Architect
-          </p>
+          <p class="text-lg font-bold text-primary">Role: Lead Researcher</p>
         </div>
 
         <!-- Problem / Solution / Outcome -->
         <div class="space-y-6 md:space-y-8">
-          
           <div>
-            <h4 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">The Challenge</h4>
-            <p class="text-foreground/90 leading-relaxed">
-              A legacy monolithic application was facing severe scalability bottlenecks during peak transaction periods, resulting in high latency and occasional downtime. The tight coupling made feature development slow and risky.
+            <h4
+              class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2"
+            >
+              The Challenge
+            </h4>
+            <p class="text-foreground/90 leading-relaxed text-pretty">
+              Alzheimer’s Disease (AD) detection is challenging in early stages
+              due to heterogeneous symptomatic progression. Standard methods
+              often rely on single modalities, failing to capture the complex
+              interplay between neuroimaging markers and clinical variables.
             </p>
           </div>
 
           <div>
-            <h4 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">The Solution</h4>
-            <p class="text-foreground/90 leading-relaxed">
-              Designed and led the migration to a microservices architecture using <strong>.NET 8</strong> and <strong>Azure Kubernetes Service (AKS)</strong>. Implemented <strong>Apache Kafka</strong> as the backbone for asynchronous messaging to decouple services and ensure eventual consistency.
-            </p>
+            <h4
+              class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2"
+            >
+              The Solution
+            </h4>
+            <div
+              class="text-foreground/90 leading-relaxed space-y-4 text-pretty"
+            >
+              <p>
+                Developed an Enhanced Multi-Modal Pipeline utilizing the OASIS-3
+                dataset. I implemented a structural alignment process to the <strong
+                  >1mm MNI152 atlas</strong
+                >, extracting <strong>10 coronal slices</strong> at specific Y-coordinates
+                optimized for hippocampal and cortical atrophy detection.
+              </p>
+              <p>
+                To handle <strong>sparse clinical data</strong>, I designed a
+                longitudinal-aware imputation strategy. The architecture employs
+                a dual-stream encoder: 10-channel <strong
+                  >EfficientNet-B0</strong
+                > for MRIs and <strong>Bio-Clinical-BERT</strong> for structured
+                clinical narratives, integrated via a <strong
+                  >Cross-Attention Fusion</strong
+                > hub.
+              </p>
+            </div>
           </div>
 
           <div>
-            <h4 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">The Outcome</h4>
+            <h4
+              class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2"
+            >
+              The Outcome
+            </h4>
             <ul class="space-y-2">
               <li class="flex items-start gap-3">
                 <span class="text-primary font-bold">→</span>
-                <span class="text-foreground/90"><strong>50%</strong> reduction in infrastructure costs via auto-scaling.</span>
+                <span class="text-foreground/90 font-medium"
+                  >Achieved average <strong>AUC of 0.8952</strong> and accuracy of
+                  <strong>87.35%</strong> (5-fold Group K-Fold).</span
+                >
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-primary font-bold">→</span>
-                <span class="text-foreground/90"><strong>99.99%</strong> uptime achieved during peak load seasons.</span>
+                <span class="text-foreground/90"
+                  >Validated against longitudinal subject trajectories (MCI to
+                  AD converters).</span
+                >
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-primary font-bold">→</span>
-                <span class="text-foreground/90"><strong>10x</strong> improvement in system throughput.</span>
+                <span class="text-foreground/90"
+                  >Accepted for publication at <strong
+                    >ICATC 2025 (IEEE Xplore)</strong
+                  >.</span
+                >
               </li>
             </ul>
           </div>
-
         </div>
 
         <!-- Tech Stack -->
         <div class="mt-8 pt-6 border-t-2 border-border flex flex-wrap gap-2">
-          {["C#", ".NET 8", "Azure AKS", "Kafka", "Redis", "Terraform"].map((tech) => (
-            <span class="px-2 py-1 text-xs font-bold uppercase tracking-wider border border-border bg-secondary/10 text-muted-foreground">
-              {tech}
-            </span>
-          ))}
+          {
+            [
+              "PyTorch",
+              "Transformers",
+              "EfficientNet-B0",
+              "Bio_ClinicalBERT",
+              "MNI152-Atlas",
+              "Scikit-learn",
+            ].map((tech) => (
+              <span class="px-2 py-1 text-xs font-bold uppercase tracking-wider border border-border bg-secondary/10 text-muted-foreground">
+                {tech}
+              </span>
+            ))
+          }
         </div>
-
       </div>
 
-      <!-- Visual Side -->
-      <div class="bg-secondary/5 p-6 md:p-8 lg:p-10 xl:p-12 flex items-center justify-center relative overflow-hidden">
-        <!-- Abstract Architectural Diagram Representation -->
-        <div class="relative w-full aspect-square max-w-md">
-          
-          <!-- Grid Background -->
-          <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
-          
-          <!-- Central Hub (Kafka) -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-background border-2 border-primary flex items-center justify-center z-10 shadow-[4px_4px_0px_0px_rgba(var(--primary),1)]">
-            <span class="font-black text-xs uppercase tracking-widest">Kafka</span>
+      <!-- Visual Side (Top-to-Bottom Architectural Diagram) -->
+      <div
+        class="bg-secondary/5 p-4 md:p-8 flex items-center justify-center relative min-h-225 w-full font-sans"
+      >
+        <!-- Main Container utilizing full 1100px width and ample vertical space -->
+        <div
+          class="relative w-full max-w-275 h-273.5 border-2 border-foreground/10 bg-background/50 rounded-xl overflow-hidden shadow-sm"
+        >
+          <!-- Grid Background (Subtle) -->
+          <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#80808015_1px,transparent_1px),linear-gradient(to_bottom,#80808015_1px,transparent_1px)] bg-size-[32px_32px]"
+          >
           </div>
 
-          <!-- Services (Orbiting) -->
-          <div class="absolute top-1/4 left-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
-            <span class="font-bold text-[10px] uppercase">Auth</span>
-          </div>
-          <div class="absolute bottom-1/4 right-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
-            <span class="font-bold text-[10px] uppercase">Order</span>
-          </div>
-          <div class="absolute top-1/4 right-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
-            <span class="font-bold text-[10px] uppercase">Pay</span>
-          </div>
-          <div class="absolute bottom-1/4 left-1/4 w-16 h-16 bg-card border-2 border-foreground flex items-center justify-center z-10">
-            <span class="font-bold text-[10px] uppercase">Inv</span>
+          <!-- ================= 5-FOLD CV BOUNDING BOX ================= -->
+          <!-- Encloses the Encoders and the Fusion module -->
+          <div
+            class="absolute top-[38%] bottom-[20%] left-[8%] right-[8%] border-4 border-dashed border-primary/50 bg-primary/3 z-0 shadow-inner"
+          >
+            <div
+              class="absolute -top-5 left-12 bg-background border-2 border-foreground px-5 py-2 text-[14px] font-black uppercase text-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] tracking-widest flex items-center gap-2"
+            >
+              5-Fold Group K-Fold (Multi-Modal)
+            </div>
           </div>
 
-          <!-- Connecting Lines -->
-          <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" stroke="currentColor" stroke-width="2">
-            <line x1="50%" y1="50%" x2="25%" y2="25%" />
-            <line x1="50%" y1="50%" x2="75%" y2="75%" />
-            <line x1="50%" y1="50%" x2="75%" y2="25%" />
-            <line x1="50%" y1="50%" x2="25%" y2="75%" />
+          <!-- ================= ROW 1: INPUTS (Top: 10%) ================= -->
+
+          <!-- Input 1: T1w MRI -->
+          <div
+            class="absolute top-[10%] left-[25%] -translate-x-1/2 -translate-y-1/2 z-20 w-32 aspect-square flex flex-col items-center justify-center"
+          >
+            <span
+              class="absolute -top-6 text-[13px] font-black uppercase text-foreground tracking-widest whitespace-nowrap bg-background/80 px-2 py-1 border border-foreground/20 shadow-sm"
+              >T1w MRI (10 Slices)</span
+            >
+            <div class="relative w-[80%] h-[80%]">
+              {
+                [...Array(6)].map((_, i) => (
+                  <div
+                    class="absolute border-2 border-foreground bg-card"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      left: `${i * 4}px`,
+                      top: `${i * 4}px`,
+                      zIndex: 10 - i,
+                    }}
+                  >
+                    <div class="absolute inset-1.5 bg-muted/60 border border-foreground/10" />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Input 2: Clinical Data -->
+          <div
+            class="absolute top-[10%] left-[75%] -translate-x-1/2 -translate-y-1/2 z-20 w-40 h-28 border-2 border-foreground bg-card p-4 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-center gap-2"
+          >
+            <span
+              class="absolute -top-6 left-1/2 -translate-x-1/2 text-[13px] font-black uppercase text-foreground tracking-widest whitespace-nowrap bg-background/80 px-2 py-1 border border-foreground/20 shadow-sm"
+              >Clinical Data</span
+            >
+            <div class="h-2 w-full bg-primary border border-foreground"></div>
+            <div class="h-2 w-4/5 bg-primary/80 border border-foreground/80">
+            </div>
+            <div class="h-2 w-full bg-primary/60 border border-foreground/60">
+            </div>
+            <div class="h-2 w-2/3 bg-foreground/30 border border-foreground/40">
+            </div>
+          </div>
+
+          <!-- ================= ROW 2: PRE-PROCESSING (Top: 26%) ================= -->
+
+          <!-- MRI Process -->
+          <div
+            class="absolute top-[26%] left-[25%] -translate-x-1/2 -translate-y-1/2 z-20 w-72 border-2 border-foreground bg-background p-4 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center"
+          >
+            <span
+              class="text-[14px] font-black uppercase text-foreground leading-tight"
+              >MRI Clean Up & Process</span
+            >
+            <div class="w-1/2 h-px bg-foreground/20 my-2"></div>
+            <span class="text-[11px] font-bold text-muted-foreground uppercase"
+              >Skull Strip & 2D Extraction</span
+            >
+          </div>
+
+          <!-- Narrative Gen -->
+          <div
+            class="absolute top-[26%] left-[75%] -translate-x-1/2 -translate-y-1/2 z-20 w-72 border-2 border-foreground bg-background p-4 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center"
+          >
+            <span
+              class="text-[14px] font-black uppercase text-foreground leading-tight"
+              >Narrative Gen</span
+            >
+            <div class="w-1/2 h-px bg-foreground/20 my-2"></div>
+            <span class="text-[11px] font-bold text-muted-foreground uppercase"
+              >Clinical Text Synthesis</span
+            >
+          </div>
+
+          <!-- ================= ROW 3: ENCODERS (Top: 46%) ================= -->
+
+          <!-- EfficientNet_B0 -->
+          <div
+            class="absolute top-[46%] left-[25%] -translate-x-1/2 z-20 w-54 border-2 border-foreground bg-background p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center border-l-8 border-l-primary"
+          >
+            <span
+              class="text-[16px] font-black uppercase text-primary leading-tight"
+              >EfficientNet-B0</span
+            >
+            <span
+              class="text-[11px] font-bold text-muted-foreground uppercase mt-1 tracking-widest"
+              >(Image Encoder)</span
+            >
+          </div>
+
+          <!-- Bio_Clinical_BERT -->
+          <div
+            class="absolute top-[46%] left-[75%] -translate-x-1/2 z-20 w-54 border-2 border-foreground bg-background p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center border-r-8 border-r-primary"
+          >
+            <span
+              class="text-[16px] font-black uppercase text-primary leading-tight"
+              >Bio_Clinical_BERT</span
+            >
+            <span
+              class="text-[11px] font-bold text-muted-foreground uppercase mt-1 tracking-widest"
+              >(Text Transformer)</span
+            >
+          </div>
+
+          <!-- ================= ROW 4: FUSION (Top: 66%) ================= -->
+
+          <!-- Cross Attention Fusion -->
+          <div
+            class="absolute top-[66%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 w-85 border-4 border-primary bg-background p-6 shadow-[8px_8px_0px_0px_rgba(var(--primary),1)] text-center flex flex-col items-center"
+          >
+            <span class="font-black uppercase text-foreground leading-none mb-1"
+              >Cross Attention</span
+            >
+            <span class="font-black uppercase text-primary leading-none mb-3"
+              >Fusion</span
+            >
+            <div class="w-[80%] h-0.5 bg-foreground/20 mb-2"></div>
+            <span
+              class="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.15em]"
+              >Multi-Modal Integration</span
+            >
+          </div>
+
+          <!-- ================= ROW 5: OUTPUT ENSEMBLES (Top: 88%) ================= -->
+
+          <!-- Majority Vote -->
+          <div
+            class="absolute top-[88%] left-[30%] -translate-x-1/2 -translate-y-1/2 z-20 w-64 border-2 border-foreground bg-primary text-primary-foreground p-5 shadow-[5px_5px_0px_0px_rgba(0,0,0,0.4)] text-center"
+          >
+            <span class="block text-[14px] font-black uppercase tracking-wider"
+              >Majority Vote<br />Ensemble</span
+            >
+          </div>
+
+          <!-- Average Ensemble -->
+          <div
+            class="absolute top-[88%] left-[70%] -translate-x-1/2 -translate-y-1/2 z-20 w-64 border-2 border-foreground bg-background text-foreground p-5 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] text-center"
+          >
+            <span class="block text-[14px] font-black uppercase tracking-wider"
+              >Average<br />Ensemble</span
+            >
+          </div>
+
+          <!-- ================= DATA FLOW SVG LINES ================= -->
+          <svg
+            class="absolute inset-0 w-full h-full pointer-events-none z-10"
+            style="opacity: 0.85"
+          >
+            <defs>
+              <!-- Standard Arrow -->
+              <marker
+                id="arrow"
+                viewBox="0 0 10 10"
+                refX="7"
+                refY="5"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto-start-reverse"
+              >
+                <path
+                  d="M 0 0 L 10 5 L 0 10 z"
+                  fill="currentColor"
+                  class="text-foreground"></path>
+              </marker>
+              <!-- Primary Color Arrow -->
+              <marker
+                id="arrow-primary"
+                viewBox="0 0 10 10"
+                refX="7"
+                refY="5"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--primary)"></path>
+              </marker>
+            </defs>
+
+            <!-- 1. Inputs to Pre-processing -->
+            <path
+              d="M 25% 18% L 25% 22%"
+              stroke="currentColor"
+              class="text-foreground"
+              stroke-width="2.5"
+              fill="none"
+              marker-end="url(#arrow)"></path>
+            <path
+              d="M 75% 18% L 75% 22%"
+              stroke="currentColor"
+              class="text-foreground"
+              stroke-width="2.5"
+              fill="none"
+              marker-end="url(#arrow)"></path>
+
+            <!-- 2. Pre-processing to Encoders -->
+            <path
+              d="M 25% 30% L 25% 41%"
+              stroke="currentColor"
+              class="text-foreground"
+              stroke-width="2.5"
+              fill="none"
+              stroke-dasharray="6,4"
+              marker-end="url(#arrow)"></path>
+            <path
+              d="M 75% 30% L 75% 41%"
+              stroke="currentColor"
+              class="text-foreground"
+              stroke-width="2.5"
+              fill="none"
+              stroke-dasharray="6,4"
+              marker-end="url(#arrow)"></path>
+
+            <!-- 3. Encoders to Fusion (Angled elbow paths) -->
+            <!-- Left side: down, right, down -->
+            <path
+              d="M 25% 51% L 25% 58% L 40% 58% L 40% 61%"
+              stroke="var(--primary)"
+              stroke-width="3"
+              fill="none"
+              marker-end="url(#arrow-primary)"></path>
+            <!-- Right side: down, left, down -->
+            <path
+              d="M 75% 51% L 75% 58% L 60% 58% L 60% 61%"
+              stroke="var(--primary)"
+              stroke-width="3"
+              fill="none"
+              marker-end="url(#arrow-primary)"></path>
+
+            <!-- 4. Fusion to Outputs (Branching paths) -->
+            <!-- Split mechanism dropping from bottom of Fusion -->
+            <path
+              d="M 50% 71% L 50% 81%"
+              stroke="var(--primary)"
+              stroke-width="3"
+              fill="none"></path>
+
+            <!-- Branch to Majority Vote -->
+            <path
+              d="M 50% 81% L 30% 81% L 30% 84%"
+              stroke="var(--primary)"
+              stroke-width="3"
+              fill="none"
+              marker-end="url(#arrow-primary)"></path>
+
+            <!-- Branch to Average Ensemble -->
+            <path
+              d="M 50% 81% L 70% 81% L 70% 84%"
+              stroke="currentColor"
+              class="text-foreground"
+              stroke-width="3"
+              fill="none"
+              marker-end="url(#arrow)"></path>
           </svg>
-
-          <!-- Floating Elements -->
-          <div class="absolute top-10 right-10 w-4 h-4 bg-primary/20 rounded-full animate-pulse"></div>
-          <div class="absolute bottom-10 left-10 w-6 h-6 border-2 border-primary/20 rounded-full"></div>
-
         </div>
       </div>
-
     </div>
   </div>
 </SectionContainer>
+
+<style>
+  .shadow-neo {
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  @keyframes hub-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      border-color: rgb(var(--primary));
+    }
+    50% {
+      transform: scale(1.02);
+      border-color: rgb(var(--foreground));
+    }
+  }
+</style>
