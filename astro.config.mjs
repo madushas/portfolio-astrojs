@@ -1,26 +1,26 @@
 // @ts-check
 
-import cloudflare from '@astrojs/cloudflare';
-import sitemap from '@astrojs/sitemap';
-import svelte from '@astrojs/svelte';
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'astro/config';
+import cloudflare from "@astrojs/cloudflare";
+import sitemap from "@astrojs/sitemap";
+import svelte from "@astrojs/svelte";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-	site: 'https://madusha.dev',
-	output: 'server',
+	site: "https://madusha.dev",
+	output: "server",
 	// Explicitly set a non-Cloudflare session driver to avoid the adapter enabling
 	// Cloudflare KV sessions (which injects `cloudflare:` imports that fail on local builds).
-	session: { driver: 'memory' },
+	session: { driver: "memory" },
 	adapter: cloudflare({
-		imageService: 'compile',
+		imageService: "compile",
 		// Disable the local platform proxy during local builds on Windows to avoid
 		// runtime attempts to resolve `cloudflare:` protocol imports.
 		platformProxy: { enabled: false },
 	}),
 	integrations: [svelte(), sitemap()],
 	image: {
-		domains: ['cdn.sanity.io'],
+		domains: ["cdn.sanity.io"],
 	},
 	vite: {
 		// Remove `cloudflare:*` externalization to avoid Node ESM trying to resolve the

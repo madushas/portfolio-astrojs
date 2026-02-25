@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onMount } from 'svelte';
+import { onMount } from "svelte";
 
 let isDark = $state(false);
 let mounted = $state(false);
@@ -7,17 +7,17 @@ let mounted = $state(false);
 onMount(() => {
 	mounted = true;
 	// Check initial theme
-	isDark = document.documentElement.classList.contains('dark');
+	isDark = document.documentElement.classList.contains("dark");
 });
 
 function toggleTheme() {
 	isDark = !isDark;
 	if (isDark) {
-		document.documentElement.classList.add('dark');
-		localStorage.setItem('theme', 'dark');
+		document.documentElement.classList.add("dark");
+		localStorage.setItem("theme", "dark");
 	} else {
-		document.documentElement.classList.remove('dark');
-		localStorage.setItem('theme', 'light');
+		document.documentElement.classList.remove("dark");
+		localStorage.setItem("theme", "light");
 	}
 }
 </script>

@@ -1,17 +1,17 @@
 <script lang="ts">
-import { onDestroy, onMount } from 'svelte';
-import ThemeToggle from './ThemeToggle.svelte';
+import { onDestroy, onMount } from "svelte";
+import ThemeToggle from "./ThemeToggle.svelte";
 
-let active = $state('home');
+let active = $state("home");
 let menuOpen = $state(false);
 
 const navItems = [
-	{ label: 'Home', section: 'home', homepageOnly: true },
-	{ label: 'Services', section: 'services' },
-	{ label: 'About', section: 'about' },
-	{ label: 'Projects', section: 'projects' },
-	{ label: 'Blog', route: '/blog' },
-	{ label: 'Contact', section: 'contact', cta: true },
+	{ label: "Home", section: "home", homepageOnly: true },
+	{ label: "Services", section: "services" },
+	{ label: "About", section: "about" },
+	{ label: "Projects", section: "projects" },
+	{ label: "Blog", route: "/blog" },
+	{ label: "Contact", section: "contact", cta: true },
 ];
 
 function handleSectionNav(e: MouseEvent, id: string) {
@@ -20,7 +20,7 @@ function handleSectionNav(e: MouseEvent, id: string) {
 	const el = document.getElementById(id);
 	if (el) {
 		const y = el.getBoundingClientRect().top + window.scrollY - 80;
-		window.scrollTo({ top: y, behavior: 'smooth' });
+		window.scrollTo({ top: y, behavior: "smooth" });
 		menuOpen = false;
 	}
 }
@@ -28,17 +28,17 @@ function handleSectionNav(e: MouseEvent, id: string) {
 let _observer: IntersectionObserver | undefined;
 function getPathname() {
 	// Prefer runtime window location (works for SPA nav). For SSR fallback to '/'.
-	if (typeof window !== 'undefined' && window.location?.pathname) return window.location.pathname;
-	return '/';
+	if (typeof window !== "undefined" && window.location?.pathname) return window.location.pathname;
+	return "/";
 }
 
 function isOnHome() {
-	return getPathname() === '/';
+	return getPathname() === "/";
 }
 
 function setupObserver() {
 	const opts = {
-		rootMargin: '-20% 0px -60% 0px',
+		rootMargin: "-20% 0px -60% 0px",
 		threshold: [0, 0.1, 0.5, 1],
 	};
 
@@ -48,17 +48,17 @@ function setupObserver() {
 			.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
 		if (sorted.length > 0) {
-			const id = sorted[0].target.getAttribute('id');
+			const id = sorted[0].target.getAttribute("id");
 			if (id) active = id;
 		}
 
-		const contactSection = document.getElementById('contact');
+		const contactSection = document.getElementById("contact");
 		if (contactSection) {
 			const rect = contactSection.getBoundingClientRect();
 			const windowHeight = window.innerHeight;
 			const atBottom =
 				rect.top < windowHeight && window.scrollY + windowHeight >= document.body.scrollHeight - 50;
-			if (atBottom) active = 'contact';
+			if (atBottom) active = "contact";
 		}
 	}, opts);
 
@@ -86,7 +86,7 @@ onMount(() => {
 		}
 	}
 
-	window.addEventListener('popstate', update);
+	window.addEventListener("popstate", update);
 
 	const origPush = history.pushState;
 	const origReplace = history.replaceState;
@@ -101,7 +101,7 @@ onMount(() => {
 
 	return () => {
 		teardownObserver();
-		window.removeEventListener('popstate', update);
+		window.removeEventListener("popstate", update);
 		history.pushState = origPush;
 		history.replaceState = origReplace;
 	};
@@ -113,7 +113,7 @@ function getHref(item: any) {
 	if (isOnHome() && item.section) return `#${item.section}`;
 	if (item.route) return item.route;
 	if (item.section) return `/#${item.section}`;
-	return '/';
+	return "/";
 }
 
 function isItemActive(item: any) {

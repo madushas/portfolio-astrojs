@@ -13,7 +13,7 @@ const innerW = W - PAD.l - PAD.r;
 const innerH = H - PAD.t - PAD.b;
 
 // X labels (6 months) and sample data
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 const data = [14, 12, 11, 7, 5, 4];
 
 // Scales
@@ -23,7 +23,7 @@ const minY = Math.min(...data);
 const y = (v: number) => PAD.t + innerH - ((v - minY) / (maxY - minY)) * innerH;
 
 // Path
-const d = data.map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(v)}`).join(' ');
+const d = data.map((v, i) => `${i === 0 ? "M" : "L"}${x(i)},${y(v)}`).join(" ");
 
 const rolloutX = x(2);
 ---

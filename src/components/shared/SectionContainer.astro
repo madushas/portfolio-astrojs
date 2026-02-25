@@ -1,5 +1,5 @@
 ---
-import { cn } from '../../lib/utils';
+import { cn } from "../../lib/utils";
 
 interface Props {
 	id?: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { id, title, subtitle, class: className } = Astro.props;
-const hasAction = Astro.slots.has('action');
+const hasAction = Astro.slots.has("action");
 ---
 
 <section id={id} class={cn("py-16 md:py-20 lg:py-24 xl:py-28 section-animate", className)}>

@@ -1,9 +1,9 @@
 ---
-import { PortableText } from 'astro-portabletext';
-import PortableTextImage from '../../components/blog/PortableTextImage.astro';
-import Navbar from '../../components/shared/Navbar.svelte';
-import Layout from '../../layouts/Layout.astro';
-import { sanityClient, urlFor } from '../../lib/sanity';
+import { PortableText } from "astro-portabletext";
+import PortableTextImage from "../../components/blog/PortableTextImage.astro";
+import Navbar from "../../components/shared/Navbar.svelte";
+import Layout from "../../layouts/Layout.astro";
+import { sanityClient, urlFor } from "../../lib/sanity";
 
 interface Post {
 	title: string;
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 	try {
 		posts = await sanityClient.fetch(query);
 	} catch (err) {
-		console.warn('Failed to fetch posts from Sanity. Falling back to empty list.', err);
+		console.warn("Failed to fetch posts from Sanity. Falling back to empty list.", err);
 	}
 
 	return posts.map((post) => ({

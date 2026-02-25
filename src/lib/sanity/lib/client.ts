@@ -1,6 +1,6 @@
-import { createClient, type SanityClient } from '@sanity/client';
+import { createClient, type SanityClient } from "@sanity/client";
 
-import { apiVersion, dataset, isSanityConfigured, projectId, useCdn } from '../env';
+import { apiVersion, dataset, isSanityConfigured, projectId, useCdn } from "../env";
 
 // Lazy-load client only when Sanity is configured
 let _client: SanityClient | null = null;
@@ -16,7 +16,7 @@ export const client = {
 				dataset,
 				apiVersion,
 				useCdn,
-				perspective: 'published',
+				perspective: "published",
 			});
 		}
 		return _client.fetch<T>(query, params || {});

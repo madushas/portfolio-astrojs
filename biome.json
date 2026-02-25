@@ -35,13 +35,13 @@
 	"javascript": {
 		"formatter": {
 			"trailingCommas": "all",
-			"quoteStyle": "single",
+			"quoteStyle": "double",
 			"semicolons": "always"
 		}
 	},
 	"css": {
 		"parser": { "tailwindDirectives": true },
-		"formatter": { "quoteStyle": "single" }
+		"formatter": { "quoteStyle": "double" }
 	},
 	"json": {
 		"parser": {

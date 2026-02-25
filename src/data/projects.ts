@@ -1,4 +1,4 @@
-import type { SanityImageSource } from '@sanity/image-url';
+import type { SanityImageSource } from "@sanity/image-url";
 
 export type ProjectType = {
 	title: string;

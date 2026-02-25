@@ -1,6 +1,6 @@
 ---
-import { sanityClient, urlFor } from '../../lib/sanity';
-import SectionContainer from '../shared/SectionContainer.astro';
+import { sanityClient, urlFor } from "../../lib/sanity";
+import SectionContainer from "../shared/SectionContainer.astro";
 
 // Fetch real blog posts from Sanity CMS
 const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
@@ -16,7 +16,7 @@ let featuredPosts = [];
 try {
 	featuredPosts = await sanityClient.fetch(query);
 } catch (err) {
-	console.warn('Failed to fetch featured posts from Sanity. Falling back to empty list.', err);
+	console.warn("Failed to fetch featured posts from Sanity. Falling back to empty list.", err);
 }
 ---
 

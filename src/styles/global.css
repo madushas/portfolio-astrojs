@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
 	/* Semantic Color Mappings */
@@ -203,7 +203,7 @@
 	}
 	body {
 		margin: 0;
-		font-family: 'IBM Plex Sans', sans-serif;
+		font-family: "IBM Plex Sans", sans-serif;
 		color: hsl(var(--foreground));
 		background: hsl(var(--background));
 		line-height: var(--lh);
@@ -325,7 +325,7 @@
 	}
 
 	.bg-noise {
-		background-image: url('../assets/images/bg-noise.png');
+		background-image: url("../assets/images/bg-noise.png");
 		opacity: 0.03;
 		pointer-events: none;
 	}
