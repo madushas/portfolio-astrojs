@@ -33,7 +33,7 @@
 		"nanostores": "^1.1.0",
 		"sanity": "^5.12.0",
 		"sharp": "^0.34.5",
-		"svelte": "^5.53.3",
+		"svelte": "^5.53.5",
 		"tailwind-merge": "^3.5.0",
 		"tailwindcss": "^4.2.1"
 	},
