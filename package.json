@@ -29,7 +29,7 @@
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"lenis": "^1.3.18",
-		"motion": "^12.35.0",
+		"motion": "^12.35.2",
 		"nanostores": "^1.1.1",
 		"sanity": "^5.13.0",
 		"sharp": "^0.34.5",
