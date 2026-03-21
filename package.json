@@ -14,9 +14,9 @@
 		"ci": "biome ci ."
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "^13.1.3",
+		"@astrojs/cloudflare": "^12.6.13",
 		"@astrojs/sitemap": "^3.7.1",
-		"@astrojs/svelte": "^8.0.3",
+		"@astrojs/svelte": "^7.2.5",
 		"@astrojs/tailwind": "^6.0.2",
 		"@fontsource-variable/chivo": "^5.2.8",
 		"@fontsource/chivo": "^5.2.8",
@@ -24,7 +24,7 @@
 		"@sanity/client": "^7.20.0",
 		"@sanity/image-url": "^2.0.3",
 		"@tailwindcss/vite": "^4.2.2",
-		"astro": "^6.0.8",
+		"astro": "5",
 		"astro-portabletext": "^0.13.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",

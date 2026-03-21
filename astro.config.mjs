@@ -4,14 +4,14 @@ import cloudflare from "@astrojs/cloudflare";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, sessionDrivers } from "astro/config";
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
 	site: "https://madusha.dev",
 	output: "server",
 	// Explicitly set a non-Cloudflare session driver to avoid the adapter enabling
 	// Cloudflare KV sessions (which injects `cloudflare:` imports that fail on local builds).
-	session: { driver: sessionDrivers.localstorage()},
+	session: { driver: "memory" },
 	adapter: cloudflare({
 		imageService: "compile",
 		// Disable the local platform proxy during local builds on Windows to avoid
