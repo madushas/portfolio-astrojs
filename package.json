@@ -24,7 +24,7 @@
 		"@sanity/client": "^7.20.0",
 		"@sanity/image-url": "^2.1.1",
 		"@tailwindcss/vite": "^4.2.2",
-		"astro": "^5.18.1",
+		"astro": "^6.1.6",
 		"astro-portabletext": "^0.13.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
