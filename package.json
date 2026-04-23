@@ -14,7 +14,7 @@
 		"ci": "biome ci ."
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "^12.6.13",
+		"@astrojs/cloudflare": "^13.1.10",
 		"@astrojs/sitemap": "^3.7.2",
 		"@astrojs/svelte": "^7.2.5",
 		"@astrojs/tailwind": "^6.0.2",
