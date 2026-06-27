@@ -81,5 +81,5 @@ const developerEvents: DeveloperEventType[] = [
 	},
 ];
 
-export { developerEvents };
 export type { DeveloperEventType };
+export { developerEvents };

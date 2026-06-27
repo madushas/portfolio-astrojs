@@ -1,6 +1,6 @@
 {
-    "sonarlint.connectedMode.project": {
-        "connectionId": "madusha",
-        "projectKey": "MadushaS_MadushaS.github.io"
-    }
+	"sonarlint.connectedMode.project": {
+		"connectionId": "madusha",
+		"projectKey": "MadushaS_MadushaS.github.io"
+	}
 }
